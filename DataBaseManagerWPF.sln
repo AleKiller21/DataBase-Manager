@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseManagerWPF", "DataBaseManagerWPF\DataBaseManagerWPF.csproj", "{7C9F1C7C-BAEC-4C47-B33F-6D22374DB302}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseLayer", "DataBaseLayer\DataBaseLayer.csproj", "{DFA619E4-4705-4C7B-A167-67245A1428F9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C9F1C7C-BAEC-4C47-B33F-6D22374DB302}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C9F1C7C-BAEC-4C47-B33F-6D22374DB302}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C9F1C7C-BAEC-4C47-B33F-6D22374DB302}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C9F1C7C-BAEC-4C47-B33F-6D22374DB302}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFA619E4-4705-4C7B-A167-67245A1428F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFA619E4-4705-4C7B-A167-67245A1428F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFA619E4-4705-4C7B-A167-67245A1428F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFA619E4-4705-4C7B-A167-67245A1428F9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

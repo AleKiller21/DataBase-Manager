@@ -1,0 +1,13 @@
+﻿<Window x:Class="DataBaseManagerWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataBaseManagerWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="579.873" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="299" Margin="10,10,0,0" VerticalAlignment="Top" Width="405"/>
+        <Button x:Name="button" Content="New Connection" HorizontalAlignment="Left" Margin="443,44,0,0" VerticalAlignment="Top" Width="98" Height="39" Cursor="Hand" Click="button_Click"/>
+    </Grid>
+</Window>
