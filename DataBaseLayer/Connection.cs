@@ -47,6 +47,23 @@ namespace DataBaseLayer
 
             config.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection("connectionStrings");
+
+            CreateDatabase(conn.ConnectionString, databaseName);
+        }
+
+        private static void CreateDatabase(string connString, string databaseName)
+        {
+            if (Directory.Exists($"C:\\DB2\\NODE0000\\{databaseName}")) return;
+
+            System.Diagnostics.Process process = new System.Diagnostics.Process();
+            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            //startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            startInfo.FileName = "db2cmd.exe";
+            startInfo.UseShellExecute = false;
+            startInfo.Arguments = $"/C \"db2 CREATE DATABASE {databaseName} AUTOMATIC STORAGE YES ON \'C:\\\' DBPATH ON \'C:\\\'\"";
+            process.StartInfo = startInfo;
+            process.Start();
+            process.WaitForExit();
         }
     }
 }
