@@ -9,9 +9,20 @@ namespace DataBaseManagerWPF
     /// </summary>
     public partial class CreateConnection : Window
     {
-        public CreateConnection()
+        private string existingConnectionName;
+
+        public CreateConnection(string database, string host, string port, string user, string password, string existingConnectionName)
         {
             InitializeComponent();
+
+            txt_database.Text = database;
+            txt_host.Text = host;
+            txt_password.Text = password;
+            txt_port.Text = port;
+            txt_username.Text = user;
+            txt_connection_name.Text = existingConnectionName;
+
+            this.existingConnectionName = existingConnectionName;
         }
 
         private void btn_cancel_Click(object sender, RoutedEventArgs e)
@@ -29,8 +40,18 @@ namespace DataBaseManagerWPF
 
             try
             {
-                Connection.CreateConnection(txt_database.Text, txt_host.Text, txt_username.Text, txt_password.Text, txt_port.Text);
-                MessageBox.Show(this, "Connection has been created.");
+                if (existingConnectionName == "")
+                {
+                    Connection.CreateConnection(txt_database.Text, txt_host.Text, txt_username.Text, txt_password.Text, txt_port.Text, txt_connection_name.Text);
+                    MessageBox.Show(this, "Connection has been created.");
+                }
+                else
+                {
+                    Connection.ModifyConnection(txt_database.Text, txt_host.Text, txt_username.Text, txt_password.Text, txt_port.Text, existingConnectionName, txt_connection_name.Text);
+
+                    MessageBox.Show(this, "Connection has been updated.");
+                }
+
                 this.Close();
             }
             catch (Exception exception)

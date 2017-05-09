@@ -15,7 +15,7 @@ namespace DataBaseLayer
     {
         public static DB2Connection currentConnection;
 
-        public static void CreateConnection(string databaseName, string host, string username, string password, string port)
+        public static void CreateConnection(string databaseName, string host, string username, string password, string port, string connectionName)
         {
             var conn = new SqlConnectionStringBuilder
             {
@@ -26,13 +26,13 @@ namespace DataBaseLayer
             };
 
             var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            var connString = config.ConnectionStrings.ConnectionStrings[host];
+            var connString = config.ConnectionStrings.ConnectionStrings[connectionName];
 
             if (connString == null)
             {
                 config.ConnectionStrings.ConnectionStrings.Add(new ConnectionStringSettings
                 {
-                    Name = host,
+                    Name = connectionName,
                     ConnectionString = conn.ConnectionString
                 });
             }
@@ -44,7 +44,7 @@ namespace DataBaseLayer
 
                 config.ConnectionStrings.ConnectionStrings.Add(new ConnectionStringSettings
                 {
-                    Name = host,
+                    Name = connectionName,
                     ConnectionString = conn.ConnectionString
                 });
             }
@@ -53,6 +53,25 @@ namespace DataBaseLayer
             ConfigurationManager.RefreshSection("connectionStrings");
 
             //CreateDatabase(conn.ConnectionString, databaseName);
+        }
+
+        public static void ModifyConnection(string databaseName, string host, string username, string password, string port, string connName, string newConnName)
+        {
+            var conn = new SqlConnectionStringBuilder
+            {
+                DataSource = $"Server={host}:{port};Database={databaseName};UID={username};PWD={password};",
+                InitialCatalog = databaseName,
+                UserID = username,
+                Password = password
+            };
+
+            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            var connSettings = config.ConnectionStrings.ConnectionStrings[connName];
+
+            connSettings.Name = newConnName;
+            connSettings.ConnectionString = conn.ConnectionString;
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("connectionStrings");
         }
 
         public static void Connect(string connString)

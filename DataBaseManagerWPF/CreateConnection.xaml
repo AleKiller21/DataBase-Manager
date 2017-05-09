@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DataBaseManagerWPF"
         mc:Ignorable="d"
-        Title="New Connection" Height="355.932" Width="525">
+        Title="Connection Window" Height="355.932" Width="525">
     <Grid>
         <Label x:Name="lb_database" Content="Database:" HorizontalAlignment="Left" Margin="9,13,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lb_username" Content="Username:" HorizontalAlignment="Left" Margin="9,167,0,0" VerticalAlignment="Top"/>
@@ -19,6 +19,8 @@
         <TextBox x:Name="txt_password" HorizontalAlignment="Left" Height="23" Margin="124,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="btn_finish" Content="Finish" HorizontalAlignment="Left" Height="26" Margin="385,277,0,0" VerticalAlignment="Top" Width="104" FontSize="11" Click="btn_finish_Click"/>
         <Button x:Name="btn_cancel" Content="Cancel" HorizontalAlignment="Left" Height="26" Margin="266,277,0,0" VerticalAlignment="Top" Width="104" FontSize="11" Click="btn_cancel_Click"/>
+        <Label x:Name="lb_password_Copy" Content="Connection Name:" HorizontalAlignment="Left" Margin="9,259,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_connection_name" HorizontalAlignment="Left" Height="23" Margin="124,262,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>

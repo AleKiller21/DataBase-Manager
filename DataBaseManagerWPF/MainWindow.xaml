@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="579.873" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
-        <DataGrid ItemsSource="{Binding}" x:Name="dataGrid_Connections" HorizontalAlignment="Left" Height="299" Margin="10,10,0,0" VerticalAlignment="Top" Width="405" AutoGenerateColumns="False" SelectedIndex="0" SelectionMode="Single" MouseDoubleClick="dataGrid_Connections_MouseDoubleClick">
+        <DataGrid ItemsSource="{Binding}" x:Name="dataGrid_Connections" HorizontalAlignment="Left" Height="299" Margin="10,10,0,0" VerticalAlignment="Top" Width="405" AutoGenerateColumns="False" SelectionMode="Single" MouseDoubleClick="dataGrid_Connections_MouseDoubleClick">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Connection}" ClipboardContentBinding="{x:Null}" FontSize="14" Header="Connection" IsReadOnly="True" CanUserResize="False"/>
                 <DataGridTextColumn Binding="{Binding Database}" ClipboardContentBinding="{x:Null}" FontSize="14" Header="Database" IsReadOnly="True" CanUserResize="False"/>
@@ -15,5 +15,6 @@
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="btn_create_connection" Content="New Connection" HorizontalAlignment="Left" Margin="443,44,0,0" VerticalAlignment="Top" Width="98" Height="39" Cursor="Hand" Click="button_Click"/>
+        <Button x:Name="btn_edit_connection" Content="Edit Connection" HorizontalAlignment="Left" Margin="443,127,0,0" VerticalAlignment="Top" Width="98" Height="39" Cursor="Hand" Click="btn_edit_connection_Click"/>
     </Grid>
 </Window>

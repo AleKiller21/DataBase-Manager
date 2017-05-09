@@ -25,14 +25,21 @@ namespace DataBaseManagerWPF
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            CreateConnection newConn = new CreateConnection();
-            newConn.Show();
+            CreateConnection newConn = new CreateConnection("", "", "", "", "", "");
+            newConn.ShowDialog();
+            RefreshConnectionDataGrid();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            RefreshConnectionDataGrid();
+        }
+
+        private void RefreshConnectionDataGrid()
+        {
             var savedConnections = Connection.GetConnections();
 
+            _connections.Clear();
             foreach (var conn in savedConnections)
             {
                 conn.Source = conn.Source.Split(':')[0].Substring(7);
@@ -42,12 +49,31 @@ namespace DataBaseManagerWPF
 
         private void dataGrid_Connections_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var conn = dataGrid_Connections.SelectedItem as ConnectionItem;
-            if (conn == null) return;
-            var name = conn.Connection;
-            var connString = new SqlConnectionStringBuilder(ConfigurationManager.ConnectionStrings[name].ConnectionString).DataSource;
+            //var name = GetConnectionSelectedName();
+            //var connString = new SqlConnectionStringBuilder(ConfigurationManager.ConnectionStrings[name].ConnectionString).DataSource;
             
-            Connection.Connect(connString);
+            //Connection.Connect(connString);
+        }
+
+        private void btn_edit_connection_Click(object sender, RoutedEventArgs e)
+        {
+            if(dataGrid_Connections.SelectedIndex < 0) return;
+
+            var name = GetConnectionSelectedName();
+            var connSettings = new SqlConnectionStringBuilder(ConfigurationManager.ConnectionStrings[name].ConnectionString);
+            var server = connSettings.DataSource.Split(';')[0];
+            var host = server.Split(':')[0].Substring(7);
+            var port = server.Split(':')[1];
+            
+            var connWindow = new CreateConnection(connSettings.InitialCatalog, host, port, connSettings.UserID, connSettings.Password, name);
+            connWindow.ShowDialog();
+            RefreshConnectionDataGrid();
+        }
+
+        private string GetConnectionSelectedName()
+        {
+            var conn = dataGrid_Connections.SelectedItem as ConnectionItem;
+            return conn?.Connection;
         }
     }
 }
