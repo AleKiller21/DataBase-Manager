@@ -7,11 +7,14 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.IO;
 using DataBaseLayer.Models;
+using IBM.Data.DB2;
 
 namespace DataBaseLayer
 {
     public static class Connection
     {
+        public static DB2Connection currentConnection;
+
         public static void CreateConnection(string databaseName, string host, string username, string password, string port)
         {
             var conn = new SqlConnectionStringBuilder
@@ -50,6 +53,12 @@ namespace DataBaseLayer
             ConfigurationManager.RefreshSection("connectionStrings");
 
             //CreateDatabase(conn.ConnectionString, databaseName);
+        }
+
+        public static void Connect(string connString)
+        {
+            currentConnection = new DB2Connection(connString);
+            currentConnection.Open();
         }
 
         private static void CreateDatabase(string connString, string databaseName)

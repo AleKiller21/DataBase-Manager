@@ -1,19 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Forms;
+//using System.Windows.Forms;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using DataBaseLayer;
 using DataBaseLayer.Models;
 
@@ -48,6 +38,16 @@ namespace DataBaseManagerWPF
                 conn.Source = conn.Source.Split(':')[0].Substring(7);
                 _connections.Add(conn);
             }
+        }
+
+        private void dataGrid_Connections_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var conn = dataGrid_Connections.SelectedItem as ConnectionItem;
+            if (conn == null) return;
+            var name = conn.Connection;
+            var connString = new SqlConnectionStringBuilder(ConfigurationManager.ConnectionStrings[name].ConnectionString).DataSource;
+            
+            Connection.Connect(connString);
         }
     }
 }
