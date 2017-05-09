@@ -5,9 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DataBaseManagerWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="579.873" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="350" Width="579.873" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="299" Margin="10,10,0,0" VerticalAlignment="Top" Width="405"/>
-        <Button x:Name="button" Content="New Connection" HorizontalAlignment="Left" Margin="443,44,0,0" VerticalAlignment="Top" Width="98" Height="39" Cursor="Hand" Click="button_Click"/>
+        <DataGrid ItemsSource="{Binding}" x:Name="dataGrid_Connections" HorizontalAlignment="Left" Height="299" Margin="10,10,0,0" VerticalAlignment="Top" Width="405" AutoGenerateColumns="False" SelectedIndex="0" SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Connection}" ClipboardContentBinding="{x:Null}" FontSize="14" Header="Connection" IsReadOnly="True" CanUserResize="False"/>
+                <DataGridTextColumn Binding="{Binding Database}" ClipboardContentBinding="{x:Null}" FontSize="14" Header="Database" IsReadOnly="True" CanUserResize="False"/>
+                <DataGridTextColumn Binding="{Binding Source}" ClipboardContentBinding="{x:Null}" FontSize="14" Header="Source" IsReadOnly="True" CanUserResize="False"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="btn_create_connection" Content="New Connection" HorizontalAlignment="Left" Margin="443,44,0,0" VerticalAlignment="Top" Width="98" Height="39" Cursor="Hand" Click="button_Click"/>
     </Grid>
 </Window>

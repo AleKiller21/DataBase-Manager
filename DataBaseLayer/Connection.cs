@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.IO;
+using DataBaseLayer.Models;
 
 namespace DataBaseLayer
 {
@@ -48,12 +49,12 @@ namespace DataBaseLayer
             config.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection("connectionStrings");
 
-            CreateDatabase(conn.ConnectionString, databaseName);
+            //CreateDatabase(conn.ConnectionString, databaseName);
         }
 
         private static void CreateDatabase(string connString, string databaseName)
         {
-            if (Directory.Exists($"C:\\DB2\\NODE0000\\{databaseName}")) return;
+            if (Directory.Exists($"C:\\DB2\\NODE0000\\{databaseName.ToUpper()}")) return;
 
             System.Diagnostics.Process process = new System.Diagnostics.Process();
             System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
@@ -64,6 +65,25 @@ namespace DataBaseLayer
             process.StartInfo = startInfo;
             process.Start();
             process.WaitForExit();
+        }
+
+        public static List<ConnectionItem> GetConnections()
+        {
+            var connList = new List<ConnectionItem>();
+
+            for (var i = 0; i < ConfigurationManager.ConnectionStrings.Count; i++)
+            {
+                var conn = new SqlConnectionStringBuilder(ConfigurationManager.ConnectionStrings[i].ConnectionString);
+                var connName = ConfigurationManager.ConnectionStrings[i].Name;
+                connList.Add(new ConnectionItem
+                {
+                    Connection = connName,
+                    Database = conn.InitialCatalog,
+                    Source = conn.DataSource
+                });
+            }
+
+            return connList;
         }
     }
 }
