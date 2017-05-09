@@ -13,7 +13,7 @@ namespace DataBaseLayer
 {
     public static class Connection
     {
-        public static DB2Connection currentConnection;
+        private static DB2Connection _currentConnection;
 
         public static void CreateConnection(string databaseName, string host, string username, string password, string port, string connectionName)
         {
@@ -76,8 +76,13 @@ namespace DataBaseLayer
 
         public static void Connect(string connString)
         {
-            currentConnection = new DB2Connection(connString);
-            currentConnection.Open();
+            _currentConnection = new DB2Connection(connString);
+            _currentConnection.Open();
+        }
+
+        public static void Disconnect()
+        {
+            _currentConnection.Close();
         }
 
         private static void CreateDatabase(string connString, string databaseName)
@@ -85,11 +90,15 @@ namespace DataBaseLayer
             if (Directory.Exists($"C:\\DB2\\NODE0000\\{databaseName.ToUpper()}")) return;
 
             System.Diagnostics.Process process = new System.Diagnostics.Process();
-            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            System.Diagnostics.ProcessStartInfo startInfo =
+                new System.Diagnostics.ProcessStartInfo
+                {
+                    FileName = "db2cmd.exe",
+                    UseShellExecute = false,
+                    Arguments =
+                        $"/C \"db2 CREATE DATABASE {databaseName} AUTOMATIC STORAGE YES ON \'C:\\\' DBPATH ON \'C:\\\'\""
+                };
             //startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-            startInfo.FileName = "db2cmd.exe";
-            startInfo.UseShellExecute = false;
-            startInfo.Arguments = $"/C \"db2 CREATE DATABASE {databaseName} AUTOMATIC STORAGE YES ON \'C:\\\' DBPATH ON \'C:\\\'\"";
             process.StartInfo = startInfo;
             process.Start();
             process.WaitForExit();

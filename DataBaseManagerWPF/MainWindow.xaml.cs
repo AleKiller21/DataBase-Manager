@@ -14,6 +14,8 @@ namespace DataBaseManagerWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        //TODO Permitir eliminar una conexion
+
         private ObservableCollection<ConnectionItem> _connections;
 
         public MainWindow()
@@ -51,8 +53,12 @@ namespace DataBaseManagerWPF
         {
             //var name = GetConnectionSelectedName();
             //var connString = new SqlConnectionStringBuilder(ConfigurationManager.ConnectionStrings[name].ConnectionString).DataSource;
-            
+
             //Connection.Connect(connString);
+            
+            var manager = new ManagerWindow();
+            manager.Show();
+            Close();
         }
 
         private void btn_edit_connection_Click(object sender, RoutedEventArgs e)
@@ -75,5 +81,6 @@ namespace DataBaseManagerWPF
             var conn = dataGrid_Connections.SelectedItem as ConnectionItem;
             return conn?.Connection;
         }
+
     }
 }
