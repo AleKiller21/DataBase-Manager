@@ -34,6 +34,7 @@ namespace DataBaseManagerWPF.Tables
 
         private void btn_create_table_Click(object sender, RoutedEventArgs e)
         {
+            var ddl = DataBaseLayer.Table.GenerateDDL("EMPLOYEE", "BLUADMIN");
             const string createCommand = "CREATE TABLE <NAME> (<FIELDS>)";
             var editor = new SqlEditorWindow(createCommand);
             editor.ShowDialog();
