@@ -27,6 +27,13 @@ namespace DataBaseManagerWPF
             InitializeComponent();
         }
 
+        public SqlEditorWindow(string query)
+        {
+            InitializeComponent();
+
+            txt_command.Text = query;
+        }
+
         private void btn_run_Click(object sender, RoutedEventArgs e)
         {
             var command = new DB2Command(txt_command.Text, Connection.CurrentConnection);

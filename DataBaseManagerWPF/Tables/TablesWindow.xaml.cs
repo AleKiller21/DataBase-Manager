@@ -29,18 +29,25 @@ namespace DataBaseManagerWPF.Tables
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            string query = "SELECT TABSCHEMA, TABNAME, OWNER FROM SYSCAT.TABLES WHERE TABSCHEMA = 'BLUADMIN'";
+            RefreshTableDataGrid();
+        }
+
+        private void btn_create_table_Click(object sender, RoutedEventArgs e)
+        {
+            const string createCommand = "CREATE TABLE <NAME> (<FIELDS>)";
+            var editor = new SqlEditorWindow(createCommand);
+            editor.ShowDialog();
+            RefreshTableDataGrid();
+        }
+
+        private void RefreshTableDataGrid()
+        {
+            const string query = "SELECT TABSCHEMA, TABNAME, OWNER FROM SYSCAT.TABLES WHERE TABSCHEMA = 'BLUADMIN'";
             var db2Command = new DB2Command(query, Connection.CurrentConnection);
             var result = db2Command.ExecuteReader();
             var data = new DataTable();
             data.Load(result);
             dataGridTables.ItemsSource = data.DefaultView;
-        }
-
-        private void btn_create_table_Click(object sender, RoutedEventArgs e)
-        {
-            var editor = new SqlEditorWindow();
-            editor.Show();
         }
     }
 }
