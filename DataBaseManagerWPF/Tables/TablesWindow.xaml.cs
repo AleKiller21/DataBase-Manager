@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DataBaseLayer;
+using IBM.Data.DB2;
 
 namespace DataBaseManagerWPF.Tables
 {
@@ -22,6 +25,22 @@ namespace DataBaseManagerWPF.Tables
         public TablesWindow()
         {
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            string query = "SELECT TABSCHEMA, TABNAME, OWNER FROM SYSCAT.TABLES WHERE TABSCHEMA = 'BLUADMIN'";
+            var db2Command = new DB2Command(query, Connection.CurrentConnection);
+            var result = db2Command.ExecuteReader();
+            var data = new DataTable();
+            data.Load(result);
+            dataGridTables.ItemsSource = data.DefaultView;
+        }
+
+        private void btn_create_table_Click(object sender, RoutedEventArgs e)
+        {
+            var editor = new SqlEditorWindow();
+            editor.Show();
         }
     }
 }

@@ -51,11 +51,10 @@ namespace DataBaseManagerWPF
 
         private void dataGrid_Connections_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            //var name = GetConnectionSelectedName();
-            //var connString = new SqlConnectionStringBuilder(ConfigurationManager.ConnectionStrings[name].ConnectionString).DataSource;
+            var name = GetConnectionSelectedName();
+            var connString = new SqlConnectionStringBuilder(ConfigurationManager.ConnectionStrings[name].ConnectionString).DataSource;
+            Connection.Connect(connString);
 
-            //Connection.Connect(connString);
-            
             var manager = new ManagerWindow();
             manager.Show();
             Close();

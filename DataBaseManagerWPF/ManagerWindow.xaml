@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DataBaseManagerWPF"
         mc:Ignorable="d"
-        Title="Manager" Height="302.543" Width="561.864" WindowStartupLocation="CenterScreen">
+        Title="Manager" Height="302.543" Width="561.864" WindowStartupLocation="CenterScreen" Closed="Window_Closed">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="113*"/>

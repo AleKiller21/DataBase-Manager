@@ -63,6 +63,9 @@
     <Compile Include="Indexes\IndexesWindow.xaml.cs">
       <DependentUpon>IndexesWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SqlEditorWindow.xaml.cs">
+      <DependentUpon>SqlEditorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Tables\TablesWindow.xaml.cs">
       <DependentUpon>TablesWindow.xaml</DependentUpon>
     </Compile>
@@ -100,6 +103,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ManagerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SqlEditorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
