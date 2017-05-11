@@ -27,9 +27,8 @@ namespace DataBaseManagerWPF.Indexes
 
         private void btn_create_index_Click(object sender, RoutedEventArgs e)
         {
-            const string ddl = "CREATE <UNIQUE?> INDEX <NAME> ON <TABLE NAME> (<COLUMNS>);";
-            var sqlEditor = new SqlEditorWindow(ddl);
-            sqlEditor.Show();
+            var indexTypeWindow = new IndexTypeWindow();
+            indexTypeWindow.ShowDialog();
         }
 
         private void btn_drop_index_Click(object sender, RoutedEventArgs e)

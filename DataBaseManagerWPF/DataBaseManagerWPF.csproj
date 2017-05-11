@@ -63,6 +63,9 @@
     <Compile Include="Indexes\IndexesWindow.xaml.cs">
       <DependentUpon>IndexesWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Indexes\IndexTypeWindow.xaml.cs">
+      <DependentUpon>IndexTypeWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SqlEditorWindow.xaml.cs">
       <DependentUpon>SqlEditorWindow.xaml</DependentUpon>
     </Compile>
@@ -84,6 +87,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Indexes\IndexesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Indexes\IndexTypeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
