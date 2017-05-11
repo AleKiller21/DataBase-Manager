@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,7 +44,14 @@ namespace DataBaseManagerWPF.Indexes
 
         private void btn_generate_ddl_index_Click(object sender, RoutedEventArgs e)
         {
+            var row = dataGridIndexes.SelectedItem as DataRowView;
+            if(row == null) return;
 
+            var schema = row.Row.ItemArray[0];
+            var name = row.Row.ItemArray[1];
+
+            var sqlEditor = new SqlEditorWindow(Index.GenerateDDL(schema.ToString(), name.ToString()));
+            sqlEditor.Show();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
