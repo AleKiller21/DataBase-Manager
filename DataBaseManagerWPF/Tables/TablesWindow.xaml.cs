@@ -35,7 +35,7 @@ namespace DataBaseManagerWPF.Tables
 
         private void RefreshTableDataGrid()
         {
-            //TODO Use the current schema instead of a harcoded value
+            //TODO Use the current schema instead of a harcoded value or just fetch all tables from SYSCAT.TABLES
             const string query = "SELECT TABSCHEMA, TABNAME FROM SYSCAT.TABLES WHERE TABSCHEMA = 'BLUADMIN'";
             var db2Command = new DB2Command(query, Connection.CurrentConnection);
             var result = db2Command.ExecuteReader();
