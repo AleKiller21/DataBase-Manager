@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using DataBaseLayer;
+using DataBaseLayer.Models;
 using IBM.Data.DB2;
 
 namespace DataBaseManagerWPF.Tables
@@ -22,6 +13,8 @@ namespace DataBaseManagerWPF.Tables
     /// </summary>
     public partial class TablesWindow : Window
     {
+        private object _selectedTable;
+
         public TablesWindow()
         {
             InitializeComponent();
@@ -34,7 +27,6 @@ namespace DataBaseManagerWPF.Tables
 
         private void btn_create_table_Click(object sender, RoutedEventArgs e)
         {
-            var ddl = DataBaseLayer.Table.GenerateDDL("EMPLOYEE", "BLUADMIN");
             const string createCommand = "CREATE TABLE <NAME> (<FIELDS>)";
             var editor = new SqlEditorWindow(createCommand);
             editor.ShowDialog();
@@ -43,12 +35,25 @@ namespace DataBaseManagerWPF.Tables
 
         private void RefreshTableDataGrid()
         {
-            const string query = "SELECT TABSCHEMA, TABNAME, OWNER FROM SYSCAT.TABLES WHERE TABSCHEMA = 'BLUADMIN'";
+            //TODO Use the current schema instead of a harcoded value
+            const string query = "SELECT TABSCHEMA, TABNAME FROM SYSCAT.TABLES WHERE TABSCHEMA = 'BLUADMIN'";
             var db2Command = new DB2Command(query, Connection.CurrentConnection);
             var result = db2Command.ExecuteReader();
             var data = new DataTable();
             data.Load(result);
             dataGridTables.ItemsSource = data.DefaultView;
+        }
+
+        private void btn_generate_ddl_table_Click(object sender, RoutedEventArgs e)
+        {
+            var dataRowView = dataGridTables.SelectedItem as DataRowView;
+            if (dataRowView == null) return;
+
+            var tabSchema = dataRowView.Row.ItemArray[0];
+            var tabName = dataRowView.Row.ItemArray[1];
+
+            var editor = new SqlEditorWindow(Table.GenerateDDL(tabName.ToString(), tabSchema.ToString()));
+            editor.Show();
         }
     }
 }

@@ -26,36 +26,35 @@ namespace DataBaseManagerWPF
 
         private void btn_run_Click(object sender, RoutedEventArgs e)
         {
-            var ddl = DataBaseLayer.Table.GenerateDDL("EMPLOYEE", "BLUADMIN");
-            //var command = new DB2Command(txt_command.Text, Connection.CurrentConnection);
+            var command = new DB2Command(txt_command.Text, Connection.CurrentConnection);
 
-            //if (IsProjection())
-            //{
-            //    try
-            //    {
-            //        var data = new DataTable();
-            //        data.Load(command.ExecuteReader());
-            //        DataGridResult.ItemsSource = data.DefaultView;
-            //        txt_status.Text = "The command has finished successfully.";
-            //    }
-            //    catch (Exception exception)
-            //    {
-            //        txt_status.Text = exception.Message;
-            //    }
-            //}
+            if (IsProjection())
+            {
+                try
+                {
+                    var data = new DataTable();
+                    data.Load(command.ExecuteReader());
+                    DataGridResult.ItemsSource = data.DefaultView;
+                    txt_status.Text = "The command has finished successfully.";
+                }
+                catch (Exception exception)
+                {
+                    txt_status.Text = exception.Message;
+                }
+            }
 
-            //else
-            //{
-            //    try
-            //    {
-            //        command.ExecuteNonQuery();
-            //        txt_status.Text = "The command has finished successfully.";
-            //    }
-            //    catch (Exception exception)
-            //    {
-            //        txt_status.Text = exception.Message;
-            //    }
-            //}
+            else
+            {
+                try
+                {
+                    command.ExecuteNonQuery();
+                    txt_status.Text = "The command has finished successfully.";
+                }
+                catch (Exception exception)
+                {
+                    txt_status.Text = exception.Message;
+                }
+            }
         }
 
         private bool IsProjection()
