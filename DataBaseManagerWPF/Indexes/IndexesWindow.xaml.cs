@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DataBaseLayer;
 
 namespace DataBaseManagerWPF.Indexes
 {
@@ -26,12 +27,14 @@ namespace DataBaseManagerWPF.Indexes
 
         private void btn_create_index_Click(object sender, RoutedEventArgs e)
         {
-
+            const string ddl = "CREATE <UNIQUE?> INDEX <NAME> ON <TABLE NAME> (<COLUMNS>);";
+            var sqlEditor = new SqlEditorWindow(ddl);
+            sqlEditor.Show();
         }
 
         private void btn_drop_index_Click(object sender, RoutedEventArgs e)
         {
-
+            //TODO Do not allow the drop or alter of primary keys
         }
 
         private void btn_alter_index_Click(object sender, RoutedEventArgs e)
@@ -46,12 +49,15 @@ namespace DataBaseManagerWPF.Indexes
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
+            RefreshIndexesDataGrid();
         }
 
         private void RefreshIndexesDataGrid()
         {
-            const string query = "SELECT INDSCHEMA, INDNAME, TABNAME, UNIQUERULE FROM SYSCAT.INDEXES WHERE INDSCHEMA = pSCHEMA";
+            var query = 
+                $"SELECT INDSCHEMA, INDNAME, TABNAME, UNIQUERULE FROM SYSCAT.INDEXES WHERE INDSCHEMA = '{Connection.CurrentSchema}'";
+
+            dataGridIndexes.ItemsSource = DBUtilities.ProjectData(query).DefaultView;
         }
     }
 }

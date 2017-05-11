@@ -37,7 +37,7 @@ namespace DataBaseManagerWPF.Tables
         {
             //TODO Use the current schema instead of a harcoded value or just fetch all tables from SYSCAT.TABLES
             var query = $"SELECT TABSCHEMA, TABNAME FROM SYSCAT.TABLES WHERE TABSCHEMA = '{Connection.CurrentSchema}'";
-            dataGridTables.ItemsSource = DBUtilities.LoadData(query).DefaultView;
+            dataGridTables.ItemsSource = DBUtilities.ProjectData(query).DefaultView;
         }
 
         private void btn_generate_ddl_table_Click(object sender, RoutedEventArgs e)

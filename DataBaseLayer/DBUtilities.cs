@@ -10,14 +10,22 @@ namespace DataBaseLayer
 {
     public static class DBUtilities
     {
-        public static DataTable LoadData(string query)
+        public static DataTable ProjectData(string query)
         {
-            var db2Command = new DB2Command(query, Connection.CurrentConnection);
-            var result = db2Command.ExecuteReader();
-            var data = new DataTable();
-            data.Load(result);
+            try
+            {
+                var db2Command = new DB2Command(query, Connection.CurrentConnection);
+                var result = db2Command.ExecuteReader();
+                var data = new DataTable();
+                data.Load(result);
 
-            return data;
+                return data;
+            }
+            catch (Exception e)
+            {
+                Connection.Disconnect();
+                throw;
+            }
         }
     }
 }
