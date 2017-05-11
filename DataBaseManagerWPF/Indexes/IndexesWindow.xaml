@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DataBaseManagerWPF.Indexes"
         mc:Ignorable="d"
-        Title="IndexesWindow" Height="300" Width="300">
+        Title="IndexesWindow" Height="465.349" Width="732.839" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
-        
+        <DataGrid x:Name="dataGridIndexes" HorizontalAlignment="Left" Margin="11,10,0,10" VerticalAlignment="Stretch" Width="449" IsReadOnly="True" SelectionMode="Single">
+        </DataGrid>
+        <Button x:Name="btn_create_index" Content="Create Index" HorizontalAlignment="Left" Margin="519,81,0,0" VerticalAlignment="Top" Width="142" Height="36" Click="btn_create_index_Click" IsDefault="True" Cursor="Hand"/>
+        <Button x:Name="btn_drop_index" Content="Dropt Index" HorizontalAlignment="Left" Margin="519,156,0,0" VerticalAlignment="Top" Width="142" Height="36" Click="btn_drop_index_Click" Cursor="Hand"/>
+        <Button x:Name="btn_alter_index" Content="Alter Index" HorizontalAlignment="Left" Margin="519,237,0,0" VerticalAlignment="Top" Width="142" Height="36" Click="btn_alter_index_Click" Cursor="Hand"/>
+        <Button x:Name="btn_generate_ddl_index" Content="Generate DDL" HorizontalAlignment="Left" Margin="519,311,0,0" VerticalAlignment="Top" Width="142" Height="36" Click="btn_generate_ddl_index_Click" Cursor="Hand"/>
+
     </Grid>
 </Window>

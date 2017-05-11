@@ -23,5 +23,35 @@ namespace DataBaseManagerWPF.Indexes
         {
             InitializeComponent();
         }
+
+        private void btn_create_index_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_drop_index_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_alter_index_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_generate_ddl_index_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void RefreshIndexesDataGrid()
+        {
+            const string query = "SELECT INDSCHEMA, INDNAME, TABNAME, UNIQUERULE FROM SYSCAT.INDEXES WHERE INDSCHEMA = pSCHEMA";
+        }
     }
 }

@@ -36,12 +36,8 @@ namespace DataBaseManagerWPF.Tables
         private void RefreshTableDataGrid()
         {
             //TODO Use the current schema instead of a harcoded value or just fetch all tables from SYSCAT.TABLES
-            const string query = "SELECT TABSCHEMA, TABNAME FROM SYSCAT.TABLES WHERE TABSCHEMA = 'BLUADMIN'";
-            var db2Command = new DB2Command(query, Connection.CurrentConnection);
-            var result = db2Command.ExecuteReader();
-            var data = new DataTable();
-            data.Load(result);
-            dataGridTables.ItemsSource = data.DefaultView;
+            var query = $"SELECT TABSCHEMA, TABNAME FROM SYSCAT.TABLES WHERE TABSCHEMA = '{Connection.CurrentSchema}'";
+            dataGridTables.ItemsSource = DBUtilities.LoadData(query).DefaultView;
         }
 
         private void btn_generate_ddl_table_Click(object sender, RoutedEventArgs e)
@@ -54,6 +50,16 @@ namespace DataBaseManagerWPF.Tables
 
             var editor = new SqlEditorWindow(Table.GenerateDDL(tabName.ToString(), tabSchema.ToString()));
             editor.Show();
+        }
+
+        private void btn_drop_table_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_alter_table_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

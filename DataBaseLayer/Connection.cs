@@ -14,6 +14,7 @@ namespace DataBaseLayer
     public static class Connection
     {
         public static DB2Connection CurrentConnection;
+        public static string CurrentSchema;
 
         public static void CreateConnection(string databaseName, string host, string username, string password, string port, string connectionName)
         {
@@ -74,9 +75,11 @@ namespace DataBaseLayer
             ConfigurationManager.RefreshSection("connectionStrings");
         }
 
-        public static void Connect(string connString)
+        public static void Connect(string connString, string currentSchema)
         {
             CurrentConnection = new DB2Connection(connString);
+            CurrentSchema = currentSchema.ToUpper();
+
             CurrentConnection.Open();
         }
 

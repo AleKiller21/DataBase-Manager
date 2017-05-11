@@ -34,7 +34,7 @@ namespace DataBaseLayer
                 var primaryKeyReader = new DB2Command(primaryKeyCommand, Connection.CurrentConnection).ExecuteReader();
 
                 primaryKeyReader.Read();
-                if (!primaryKeyReader.IsDBNull(0))
+                if (primaryKeyReader.HasRows)
                 {
                     var key = primaryKeyReader.GetString(0).Substring(1);
                     tableDDL += "PRIMARY KEY ( " + key + " )\n";

@@ -10,8 +10,8 @@
         <DataGrid x:Name="dataGridTables" HorizontalAlignment="Left" Margin="11,10,0,10" VerticalAlignment="Stretch" Width="449" IsReadOnly="True" SelectionMode="Single">
         </DataGrid>
         <Button x:Name="btn_create_table" Content="Create Table" HorizontalAlignment="Left" Margin="519,81,0,0" VerticalAlignment="Top" Width="142" Height="36" Click="btn_create_table_Click" IsDefault="True" Cursor="Hand"/>
-        <Button x:Name="btn_drop_table" Content="Dropt Table" HorizontalAlignment="Left" Margin="519,156,0,0" VerticalAlignment="Top" Width="142" Height="36" Click="btn_create_table_Click" Cursor="Hand"/>
-        <Button x:Name="btn_alter_table" Content="Alter Table" HorizontalAlignment="Left" Margin="519,237,0,0" VerticalAlignment="Top" Width="142" Height="36" Click="btn_create_table_Click" Cursor="Hand"/>
+        <Button x:Name="btn_drop_table" Content="Dropt Table" HorizontalAlignment="Left" Margin="519,156,0,0" VerticalAlignment="Top" Width="142" Height="36" Click="btn_drop_table_Click" Cursor="Hand"/>
+        <Button x:Name="btn_alter_table" Content="Alter Table" HorizontalAlignment="Left" Margin="519,237,0,0" VerticalAlignment="Top" Width="142" Height="36" Click="btn_alter_table_Click" Cursor="Hand"/>
         <Button x:Name="btn_generate_ddl_table" Content="Generate DDL" HorizontalAlignment="Left" Margin="519,311,0,0" VerticalAlignment="Top" Width="142" Height="36" Click="btn_generate_ddl_table_Click" Cursor="Hand"/>
 
     </Grid>
