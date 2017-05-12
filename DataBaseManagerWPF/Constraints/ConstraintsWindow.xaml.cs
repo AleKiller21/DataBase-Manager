@@ -74,5 +74,23 @@ namespace DataBaseManagerWPF.Constraints
         {
             Utilities.RefreshDataGrid(dataGridConstraints, _projectionQuery);
         }
+
+        private void btn_alter_constraint_Click(object sender, RoutedEventArgs e)
+        {
+            var row = dataGridConstraints.SelectedItem as DataRowView;
+            if (row == null) return;
+
+            try
+            {
+                var ddl = ConstraintFactory.GetConstraint(row["TABSCHEMA"].ToString(), row["CONSTNAME"].ToString(),
+                        row["TABNAME"].ToString(), row["TYPE"].ToString()).GenerateAlterTemplate();
+
+                new SqlEditorWindow(ddl).Show();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+        }
     }
 }

@@ -73,7 +73,7 @@ namespace DataBaseLayer
 
         public override string GenerateAlterTemplate()
         {
-            throw new NotImplementedException();
+            return $"{GenerateDropDDL()}\n{GenerateDDL()}";
         }
 
         public static string GenerateCreateTemplate()
