@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,7 +41,13 @@ namespace DataBaseManagerWPF.Constraints
 
         private void btn_generate_ddl_constraint_Click(object sender, RoutedEventArgs e)
         {
+            var row = dataGridConstraints.SelectedItem as DataRowView;
+            if (row == null) return;
 
+            var ddl = ConstraintFactory.GetConstraint(row["TABSCHEMA"].ToString(), row["CONSTNAME"].ToString(),
+                row["TABNAME"].ToString(), row["TYPE"].ToString()).GenerateDDL();
+
+            new SqlEditorWindow(ddl).Show();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
