@@ -28,5 +28,10 @@ namespace DataBaseLayer
 <FOR EACH ROW || FOR EACH STATEMENT || REFERENCING>
 <TRIGGERED ACTION>";
         }
+
+        public static string GenerateDropDDL(string schema, string name)
+        {
+            return $"DROP TRIGGER {schema}.{name}";
+        }
     }
 }

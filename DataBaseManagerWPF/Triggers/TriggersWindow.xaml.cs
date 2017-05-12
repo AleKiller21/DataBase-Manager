@@ -24,7 +24,10 @@ namespace DataBaseManagerWPF.Triggers
 
         private void btn_drop_trigger_Click(object sender, RoutedEventArgs e)
         {
+            var row = dataGridTriggers.SelectedItem as DataRowView;
+            if (row == null) return;
 
+            new SqlEditorWindow(DataBaseLayer.Trigger.GenerateDropDDL(row["TRIGSCHEMA"].ToString(), row["TRIGNAME"].ToString())).Show();
         }
 
         private void btn_generate_ddl_trigger_Click(object sender, RoutedEventArgs e)
