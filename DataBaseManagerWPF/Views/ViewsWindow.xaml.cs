@@ -43,5 +43,13 @@ namespace DataBaseManagerWPF.Views
         {
             Utilities.RefreshDataGrid(dataGridViews, _projectionQuery);
         }
+
+        private void dataGridViews_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var row = dataGridViews.SelectedItem as DataRowView;
+            if(row == null) return;
+
+            new ViewDataBrowser(row["VIEWSCHEMA"].ToString(), row["VIEWNAME"].ToString()).Show();
+        }
     }
 }

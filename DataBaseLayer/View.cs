@@ -25,5 +25,15 @@ namespace DataBaseLayer
         {
             return $"DROP VIEW {name};";
         }
+
+        public static DB2DataReader GetData(string schema, string name)
+        {
+            var ddl = GenerateDDL(schema, name);
+            var index = ddl.IndexOf("select", StringComparison.OrdinalIgnoreCase);
+            var query = ddl.Substring(index, ddl.Length - index);
+            var reader = new DB2Command(query, Connection.CurrentConnection).ExecuteReader();
+
+            return reader;
+        }
     }
 }

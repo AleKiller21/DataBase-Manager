@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Views" Height="465.349" Width="732.839" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
-        <DataGrid x:Name="dataGridViews" HorizontalAlignment="Left" Margin="11,10,0,10" VerticalAlignment="Stretch" Width="449" IsReadOnly="True" SelectionMode="Single">
+        <DataGrid x:Name="dataGridViews" HorizontalAlignment="Left" Margin="11,10,0,10" VerticalAlignment="Stretch" Width="449" IsReadOnly="True" SelectionMode="Single" MouseDoubleClick="dataGridViews_MouseDoubleClick" Cursor="Hand">
         </DataGrid>
         <Button x:Name="btn_create_view" Content="Create View" HorizontalAlignment="Left" Margin="519,75,0,0" VerticalAlignment="Top" Width="142" Height="36" Click="btn_create_view_Click" IsDefault="True" Cursor="Hand"/>
         <Button x:Name="btn_drop_view" Content="Drop View" HorizontalAlignment="Left" Margin="519,199,0,0" VerticalAlignment="Top" Width="142" Height="36" Click="btn_drop_view_Click" Cursor="Hand"/>

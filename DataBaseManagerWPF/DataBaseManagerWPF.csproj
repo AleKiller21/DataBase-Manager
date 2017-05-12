@@ -82,6 +82,9 @@
       <DependentUpon>TriggersWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utilities.cs" />
+    <Compile Include="Views\ViewDataBrowser.xaml.cs">
+      <DependentUpon>ViewDataBrowser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ViewsWindow.xaml.cs">
       <DependentUpon>ViewsWindow.xaml</DependentUpon>
     </Compile>
@@ -137,6 +140,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Triggers\TriggersWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewDataBrowser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
