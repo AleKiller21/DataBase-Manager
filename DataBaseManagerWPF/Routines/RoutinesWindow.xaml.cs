@@ -10,7 +10,8 @@ namespace DataBaseManagerWPF.Routines
     /// </summary>
     public partial class RoutinesWindow : Window
     {
-        private string _projectionQuery;
+        private readonly string _projectionQuery;
+
         public RoutinesWindow()
         {
             InitializeComponent();
@@ -49,6 +50,11 @@ namespace DataBaseManagerWPF.Routines
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Utilities.RefreshDataGrid(dataGridRoutines, _projectionQuery);
+        }
+
+        private void btn_run_routine_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO permitir correr rutinas (opcional)
         }
     }
 }

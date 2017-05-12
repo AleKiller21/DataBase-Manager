@@ -27,7 +27,7 @@
             <Image x:Name="img_users" Source="Assets/Folder-48.png" HorizontalAlignment="Left" Height="54" VerticalAlignment="Top" Width="58"/>
             <Label x:Name="label_Copy3" Content="Users" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="15"/>
         </StackPanel>
-        <StackPanel x:Name="stck_panel_views" Margin="174,158,165,30" Orientation="Vertical" Cursor="Hand">
+        <StackPanel x:Name="stck_panel_views" Margin="174,158,165,30" Orientation="Vertical" Cursor="Hand" MouseLeftButtonUp="stck_panel_views_MouseLeftButtonUp">
             <Image x:Name="img_views" Source="Assets/Folder-48.png" HorizontalAlignment="Left" Height="54" VerticalAlignment="Top" Width="57"/>
             <Label x:Name="label_Copy2" Content="Views" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="15"/>
         </StackPanel>

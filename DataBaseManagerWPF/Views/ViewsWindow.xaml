@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DataBaseManagerWPF.Views"
         mc:Ignorable="d"
-        Title="ViewsWindow" Height="300" Width="300">
+        Title="Views" Height="465.349" Width="732.839" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
-        
+        <DataGrid x:Name="dataGridViews" HorizontalAlignment="Left" Margin="11,10,0,10" VerticalAlignment="Stretch" Width="449" IsReadOnly="True" SelectionMode="Single">
+        </DataGrid>
+        <Button x:Name="btn_create_view" Content="Create View" HorizontalAlignment="Left" Margin="519,52,0,0" VerticalAlignment="Top" Width="142" Height="36" Click="btn_create_view_Click" IsDefault="True" Cursor="Hand"/>
+        <Button x:Name="btn_drop_view" Content="Dropt View" HorizontalAlignment="Left" Margin="519,157,0,0" VerticalAlignment="Top" Width="142" Height="36" Click="btn_drop_view_Click" Cursor="Hand"/>
+        <Button x:Name="btn_generate_ddl_view" Content="Generate DDL" HorizontalAlignment="Left" Margin="519,259,0,0" VerticalAlignment="Top" Width="142" Height="36" Click="btn_generate_ddl_view_Click" Cursor="Hand"/>
+        <Button x:Name="btn_run_view" Content="Run" HorizontalAlignment="Left" Margin="519,358,0,0" VerticalAlignment="Top" Width="142" Height="36" Click="btn_run_view_Click" Cursor="Hand"/>
+
     </Grid>
 </Window>

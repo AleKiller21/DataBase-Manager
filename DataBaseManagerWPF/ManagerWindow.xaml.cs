@@ -15,6 +15,7 @@ using DataBaseLayer;
 using DataBaseManagerWPF.Indexes;
 using DataBaseManagerWPF.Routines;
 using DataBaseManagerWPF.Tables;
+using DataBaseManagerWPF.Views;
 
 namespace DataBaseManagerWPF
 {
@@ -49,6 +50,11 @@ namespace DataBaseManagerWPF
         {
             var routines = new RoutinesWindow();
             routines.ShowDialog();
+        }
+
+        private void stck_panel_views_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            new ViewsWindow().ShowDialog();
         }
     }
 }

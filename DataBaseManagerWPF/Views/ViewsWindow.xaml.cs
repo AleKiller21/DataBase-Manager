@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DataBaseLayer;
 
 namespace DataBaseManagerWPF.Views
 {
@@ -22,6 +23,32 @@ namespace DataBaseManagerWPF.Views
         public ViewsWindow()
         {
             InitializeComponent();
+        }
+
+        private void btn_create_view_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_drop_view_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_generate_ddl_view_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_run_view_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            var query = $"SELECT VIEWSCHEMA, VIEWNAME FROM SYSCAT.VIEWS WHERE VIEWSCHEMA = '{Connection.CurrentSchema}'";
+            Utilities.RefreshDataGrid(dataGridViews, query);
         }
     }
 }
