@@ -20,5 +20,10 @@ namespace DataBaseLayer
 
             return ddl;
         }
+
+        public static string GenerateDropDDL(string name)
+        {
+            return $"DROP VIEW {name};";
+        }
     }
 }

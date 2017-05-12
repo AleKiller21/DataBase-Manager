@@ -25,7 +25,10 @@ namespace DataBaseManagerWPF.Views
 
         private void btn_drop_view_Click(object sender, RoutedEventArgs e)
         {
+            var row = dataGridViews.SelectedItem as DataRowView;
+            if(row == null) return;
 
+            new SqlEditorWindow(View.GenerateDropDDL($"{Connection.CurrentSchema}.{row["VIEWNAME"]}")).Show();
         }
 
         private void btn_generate_ddl_view_Click(object sender, RoutedEventArgs e)
