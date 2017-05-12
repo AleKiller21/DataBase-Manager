@@ -36,7 +36,20 @@ namespace DataBaseManagerWPF.Constraints
 
         private void btn_drop_constraint_Click(object sender, RoutedEventArgs e)
         {
+            var row = dataGridConstraints.SelectedItem as DataRowView;
+            if(row == null) return;
 
+            try
+            {
+                var ddl = ConstraintFactory.GetConstraint(row["TABSCHEMA"].ToString(), row["CONSTNAME"].ToString(),
+                    row["TABNAME"].ToString(), row["TYPE"].ToString()).GenerateDropDDL();
+
+                new SqlEditorWindow(ddl).Show();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
 
         private void btn_generate_ddl_constraint_Click(object sender, RoutedEventArgs e)

@@ -10,7 +10,6 @@ namespace DataBaseLayer
     {
         public abstract string GenerateDDL();
         public abstract string GenerateDropDDL();
-        public abstract string GenerateGenerateCreateTemplate();
         public abstract string GenerateAlterTemplate();
     }
 }

@@ -36,17 +36,17 @@ namespace DataBaseLayer
 
         public override string GenerateDropDDL()
         {
-            throw new NotImplementedException();
-        }
-
-        public override string GenerateGenerateCreateTemplate()
-        {
-            throw new NotImplementedException();
+            return $"ALTER TABLE {_table} DROP CHECK {_name};";
         }
 
         public override string GenerateAlterTemplate()
         {
             throw new NotImplementedException();
+        }
+
+        public static string GenerateCreateTemplate()
+        {
+            return "ALTER TABLE <TABLE_NAME>\nADD CONSTRAINT <NAME> CHECK (<PREDICATE>);";
         }
     }
 }

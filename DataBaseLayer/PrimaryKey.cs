@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using IBM.Data.DB2;
 
 namespace DataBaseLayer
 {
@@ -10,7 +11,7 @@ namespace DataBaseLayer
     {
         private readonly string _schema;
         private readonly string _name;
-        private string _table;
+        private readonly string _table;
 
         public PrimaryKey(string schema, string name, string table)
         {
@@ -26,17 +27,30 @@ namespace DataBaseLayer
 
         public override string GenerateDropDDL()
         {
-            throw new NotImplementedException();
-        }
+            var query = $"SELECT CONSTNAME, TABNAME FROM SYSCAT.REFERENCES WHERE REFKEYNAME = '{_name}'";
+            var reader = new DB2Command(query, Connection.CurrentConnection).ExecuteReader();
+            var ddl = "";
 
-        public override string GenerateGenerateCreateTemplate()
-        {
-            throw new NotImplementedException();
+            while (reader.Read())
+            {
+                ddl += $"ALTER TABLE {reader["TABNAME"]} DROP FOREIGN KEY {reader["CONSTNAME"]};\n";
+            }
+
+            ddl += $"ALTER TABLE {_table} DROP PRIMARY KEY;";
+
+            reader.Close();
+            return ddl;
+
         }
 
         public override string GenerateAlterTemplate()
         {
             throw new NotImplementedException();
+        }
+
+        public static string GenerateCreateTemplate()
+        {
+            return "ALTER TABLE <TABLE_NAME>\nADD CONSTRAINT <NAME> PRIMARY KEY (COLUMN);";
         }
     }
 }

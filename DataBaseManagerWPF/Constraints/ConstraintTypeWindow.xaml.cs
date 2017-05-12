@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DataBaseLayer;
 
 namespace DataBaseManagerWPF.Constraints
 {
@@ -26,26 +27,21 @@ namespace DataBaseManagerWPF.Constraints
 
         private void btn_create_constraint_Click(object sender, RoutedEventArgs e)
         {
-            var template = "ALTER TABLE <TABLE_NAME>\nADD CONSTRAINT <NAME> ";
-
             switch (cmb_constraint_type.SelectedIndex)
             {
                 case 0:
-                    template += "PRIMARY KEY (COLUMN);";
-                    new SqlEditorWindow(template).Show();
+                    new SqlEditorWindow(PrimaryKey.GenerateCreateTemplate()).Show();
                     Close();
                     break;
 
 
                 case 1:
-                    template += "FOREIGN KEY (<TABLE_COLUMN>) REFERENCES (<REFERENCED TABLE COLUMN>);";
-                    new SqlEditorWindow(template).Show();
+                    new SqlEditorWindow(ForeignKey.GenerateCreateTemplate()).Show();
                     Close();
                     break;
 
                 case 2:
-                    template += "CHECK (<PREDICATE>);";
-                    new SqlEditorWindow(template).Show();
+                    new SqlEditorWindow(Check.GenerateCreateTemplate()).Show();
                     Close();
                     break;
             }

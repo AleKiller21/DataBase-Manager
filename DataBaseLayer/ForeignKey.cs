@@ -68,17 +68,17 @@ namespace DataBaseLayer
 
         public override string GenerateDropDDL()
         {
-            throw new NotImplementedException();
-        }
-
-        public override string GenerateGenerateCreateTemplate()
-        {
-            throw new NotImplementedException();
+            return $"ALTER TABLE {_table} DROP FOREIGN KEY {_name};";
         }
 
         public override string GenerateAlterTemplate()
         {
             throw new NotImplementedException();
+        }
+
+        public static string GenerateCreateTemplate()
+        {
+            return "ALTER TABLE <TABLE_NAME>\nADD CONSTRAINT <NAME> FOREIGN KEY (<TABLE_COLUMN>) REFERENCES <REFERENCED TABLE>(<REFERENCED TABLE COLUMN>);";
         }
     }
 }
