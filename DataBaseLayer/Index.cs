@@ -29,6 +29,11 @@ namespace DataBaseLayer
             }
         }
 
+        public static string GenerateDropDDL(string schema, string name)
+        {
+            return $"DROP INDEX {schema}.{name}";
+        }
+
         private static string GenerateNormalDDL(string schema, string name)
         {
             var indexQuery =

@@ -34,12 +34,32 @@ namespace DataBaseManagerWPF.Indexes
 
         private void btn_drop_index_Click(object sender, RoutedEventArgs e)
         {
-            //TODO Do not allow the drop or alter of primary keys
+            var row = dataGridIndexes.SelectedItem as DataRowView;
+            if (row == null) return;
+
+            if (row["UNIQUERULE"].ToString().Equals("P"))
+                MessageBox.Show(
+                    $"Alter cannot be performed for the following reasons:\r\n\r\n{row["INDNAME"]} is a system-generated index.");
+
+            else new SqlEditorWindow(Index.GenerateDropDDL(row["INDSCHEMA"].ToString(), row["INDNAME"].ToString())).Show();
         }
 
         private void btn_alter_index_Click(object sender, RoutedEventArgs e)
         {
+            var row = dataGridIndexes.SelectedItem as DataRowView;
+            if (row == null) return;
 
+            if (row["UNIQUERULE"].ToString().Equals("P"))
+                MessageBox.Show(
+                    $"Alter cannot be performed for the following reasons:\r\n\r\n{row["INDNAME"]} is a system-generated index.");
+
+            else
+            {
+                var ddl = Index.GenerateDropDDL(row["INDSCHEMA"].ToString(), row["INDNAME"].ToString());
+                ddl += "\n" + Index.GenerateDDL(row["INDSCHEMA"].ToString(), row["INDNAME"].ToString());
+
+                new SqlEditorWindow(ddl).Show();
+            }
         }
 
         private void btn_generate_ddl_index_Click(object sender, RoutedEventArgs e)
@@ -47,8 +67,8 @@ namespace DataBaseManagerWPF.Indexes
             var row = dataGridIndexes.SelectedItem as DataRowView;
             if(row == null) return;
 
-            var schema = row.Row.ItemArray[0];
-            var name = row.Row.ItemArray[1];
+            var schema = row["INDSCHEMA"];
+            var name = row["INDNAME"];
 
             var sqlEditor = new SqlEditorWindow(Index.GenerateDDL(schema.ToString(), name.ToString()));
             sqlEditor.Show();
