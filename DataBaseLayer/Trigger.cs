@@ -20,5 +20,13 @@ namespace DataBaseLayer
             reader.Close();
             return ddl;
         }
+
+        public static string GenerateCreateTemplate()
+        {
+            return @"CREATE OR REPLACE TRIGGER <TRIGGER NAME>
+<AFTER || BEFORE || INSTEAD OF> <TRIGGER EVENT> ON <TABLE NAME>
+<FOR EACH ROW || FOR EACH STATEMENT || REFERENCING>
+<TRIGGERED ACTION>";
+        }
     }
 }

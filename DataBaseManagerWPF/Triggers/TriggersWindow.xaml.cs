@@ -19,7 +19,7 @@ namespace DataBaseManagerWPF.Triggers
 
         private void btn_create_trigger_Click(object sender, RoutedEventArgs e)
         {
-
+            new SqlEditorWindow(DataBaseLayer.Trigger.GenerateCreateTemplate()).Show();
         }
 
         private void btn_drop_trigger_Click(object sender, RoutedEventArgs e)
