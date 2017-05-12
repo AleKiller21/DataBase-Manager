@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using DataBaseLayer;
 
 namespace DataBaseManagerWPF.Triggers
@@ -37,9 +27,19 @@ namespace DataBaseManagerWPF.Triggers
 
         }
 
-        private void btn_trigger_ddl_trigger_Click(object sender, RoutedEventArgs e)
+        private void btn_generate_ddl_trigger_Click(object sender, RoutedEventArgs e)
         {
+            var row = dataGridTriggers.SelectedItem as DataRowView;
+            if(row == null) return;
 
+            try
+            {
+                new SqlEditorWindow(DataBaseLayer.Trigger.GenerateDDL(row["TRIGSCHEMA"].ToString(), row["TRIGNAME"].ToString())).Show();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
