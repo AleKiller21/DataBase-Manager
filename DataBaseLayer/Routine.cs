@@ -12,7 +12,9 @@ namespace DataBaseLayer
             var reader = new DB2Command(query, Connection.CurrentConnection).ExecuteReader();
             reader.Read();
 
-            return reader.GetString(0);
+            var ddl = reader.GetString(0);
+            reader.Close();
+            return ddl;
         }
 
         public static string GenerateDropDDL(string name, string type)
