@@ -14,5 +14,10 @@ namespace DataBaseLayer
 
             return reader.GetString(0);
         }
+
+        public static string GenerateDropDDL(string name, string type)
+        {
+            return type.Equals("F") ? $"DROP FUNCTION {name}" : $"DROP PROCEDURE {name}";
+        }
     }
 }

@@ -25,12 +25,10 @@ namespace DataBaseManagerWPF.Routines
 
         private void btn_drop_routine_Click(object sender, RoutedEventArgs e)
         {
+            var row = dataGridRoutines.SelectedItem as DataRowView;
+            if (row == null) return;
 
-        }
-
-        private void btn_alter_routine_Click(object sender, RoutedEventArgs e)
-        {
-
+            new SqlEditorWindow(Routine.GenerateDropDDL(row["ROUTINENAME"].ToString(), row["ROUTINETYPE"].ToString())).Show();
         }
 
         private void btn_generate_ddl_routine_Click(object sender, RoutedEventArgs e)
