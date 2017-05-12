@@ -58,10 +58,17 @@ namespace DataBaseManagerWPF.Indexes
 
             else
             {
-                var ddl = Index.GenerateDropDDL(row["INDSCHEMA"].ToString(), row["INDNAME"].ToString());
-                ddl += "\n" + Index.GenerateDDL(row["INDSCHEMA"].ToString(), row["INDNAME"].ToString());
+                try
+                {
+                    var ddl = Index.GenerateDropDDL(row["INDSCHEMA"].ToString(), row["INDNAME"].ToString());
+                    ddl += "\n" + Index.GenerateDDL(row["INDSCHEMA"].ToString(), row["INDNAME"].ToString());
 
-                new SqlEditorWindow(ddl).Show();
+                    new SqlEditorWindow(ddl).Show();
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show(exception.Message);
+                }
             }
         }
 
@@ -73,8 +80,15 @@ namespace DataBaseManagerWPF.Indexes
             var schema = row["INDSCHEMA"];
             var name = row["INDNAME"];
 
-            var sqlEditor = new SqlEditorWindow(Index.GenerateDDL(schema.ToString(), name.ToString()));
-            sqlEditor.Show();
+            try
+            {
+                var sqlEditor = new SqlEditorWindow(Index.GenerateDDL(schema.ToString(), name.ToString()));
+                sqlEditor.Show();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

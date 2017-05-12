@@ -11,22 +11,14 @@ namespace DataBaseLayer
     {
         public static string GenerateDDL(string schema, string name)
         {
-            try
-            {
-                var query =
-                    $"SELECT UNIQUERULE FROM SYSCAT.INDEXES WHERE INDSCHEMA = '{schema}' AND INDNAME = '{name}'";
+            var query =
+                $"SELECT UNIQUERULE FROM SYSCAT.INDEXES WHERE INDSCHEMA = '{schema}' AND INDNAME = '{name}'";
 
-                var result = new DB2Command(query, Connection.CurrentConnection).ExecuteReader();
-                result.Read();
-                var indexType = result.GetString(0);
+            var result = new DB2Command(query, Connection.CurrentConnection).ExecuteReader();
+            result.Read();
+            var indexType = result.GetString(0);
 
-                return indexType.Equals("P") ? GeneratePrimaryDDL(schema, name) : GenerateNormalDDL(schema, name);
-            }
-            catch (Exception e)
-            {
-                Connection.Disconnect();
-                throw;
-            }
+            return indexType.Equals("P") ? GeneratePrimaryDDL(schema, name) : GenerateNormalDDL(schema, name);
         }
 
         public static string GenerateDropDDL(string schema, string name)

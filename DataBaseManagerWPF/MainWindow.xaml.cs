@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Windows;
@@ -56,7 +57,16 @@ namespace DataBaseManagerWPF
                 new SqlConnectionStringBuilder(ConfigurationManager.ConnectionStrings[name].ConnectionString);
 
             var connString = connInformation.DataSource;
-            Connection.Connect(connString, connInformation.UserID);
+
+            try
+            {
+                Connection.Connect(connString, connInformation.UserID);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+                return;
+            }
 
             var manager = new ManagerWindow();
             manager.Show();

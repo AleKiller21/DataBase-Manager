@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.Data;
+using System.Windows;
 using DataBaseLayer;
 
 namespace DataBaseManagerWPF.Routines
@@ -33,7 +35,17 @@ namespace DataBaseManagerWPF.Routines
 
         private void btn_generate_ddl_routine_Click(object sender, RoutedEventArgs e)
         {
+            var row = dataGridRoutines.SelectedItem as DataRowView;
+            if(row == null) return;
 
+            try
+            {
+                new SqlEditorWindow(Routine.GenerateDDL(row["ROUTINESCHEMA"].ToString(), row["ROUTINENAME"].ToString())).Show();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

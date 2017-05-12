@@ -1,10 +1,12 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
 using DataBaseLayer;
 using DataBaseLayer.Models;
 using IBM.Data.DB2;
+using MessageBox = System.Windows.MessageBox;
 
 namespace DataBaseManagerWPF.Tables
 {
@@ -42,8 +44,15 @@ namespace DataBaseManagerWPF.Tables
             var tabSchema = dataRowView.Row.ItemArray[0];
             var tabName = dataRowView.Row.ItemArray[1];
 
-            var editor = new SqlEditorWindow(Table.GenerateDDL(tabName.ToString(), tabSchema.ToString()));
-            editor.Show();
+            try
+            {
+                var editor = new SqlEditorWindow(Table.GenerateDDL(tabName.ToString(), tabSchema.ToString()));
+                editor.Show();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
 
         private void btn_drop_table_Click(object sender, RoutedEventArgs e)

@@ -12,20 +12,12 @@ namespace DataBaseLayer
     {
         public static DataTable ProjectData(string query)
         {
-            try
-            {
-                var db2Command = new DB2Command(query, Connection.CurrentConnection);
-                var result = db2Command.ExecuteReader();
-                var data = new DataTable();
-                data.Load(result);
+            var db2Command = new DB2Command(query, Connection.CurrentConnection);
+            var result = db2Command.ExecuteReader();
+            var data = new DataTable();
+            data.Load(result);
 
-                return data;
-            }
-            catch (Exception e)
-            {
-                Connection.Disconnect();
-                throw;
-            }
+            return data;
         }
     }
 }
