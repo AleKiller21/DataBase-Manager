@@ -20,14 +20,18 @@ namespace DataBaseManagerWPF.Views
     /// </summary>
     public partial class ViewsWindow : Window
     {
+        private readonly string _projectionQuery;
+
         public ViewsWindow()
         {
             InitializeComponent();
+            _projectionQuery =
+                $"SELECT VIEWSCHEMA, VIEWNAME FROM SYSCAT.VIEWS WHERE VIEWSCHEMA = '{Connection.CurrentSchema}'";
         }
 
         private void btn_create_view_Click(object sender, RoutedEventArgs e)
         {
-
+            new SqlEditorWindow("CREATE OR REPLACE VIEW <VIEW_NAME> AS\n\t<PROJECTION>").Show();
         }
 
         private void btn_drop_view_Click(object sender, RoutedEventArgs e)
@@ -40,15 +44,9 @@ namespace DataBaseManagerWPF.Views
 
         }
 
-        private void btn_run_view_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var query = $"SELECT VIEWSCHEMA, VIEWNAME FROM SYSCAT.VIEWS WHERE VIEWSCHEMA = '{Connection.CurrentSchema}'";
-            Utilities.RefreshDataGrid(dataGridViews, query);
+            Utilities.RefreshDataGrid(dataGridViews, _projectionQuery);
         }
     }
 }
