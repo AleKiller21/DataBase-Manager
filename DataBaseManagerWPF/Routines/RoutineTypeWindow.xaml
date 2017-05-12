@@ -1,0 +1,17 @@
+﻿<Window x:Class="DataBaseManagerWPF.Routines.RoutineTypeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataBaseManagerWPF.Routines"
+        mc:Ignorable="d"
+        Title="Select Routine Type" Height="163.348" Width="323.517" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+    <Grid>
+        <ComboBox x:Name="cmb_routine_type" HorizontalAlignment="Left" Margin="92,28,0,0" VerticalAlignment="Top" Width="124" SelectedIndex="0">
+            <ListBoxItem x:Name="item_function" Content="Function"/>
+            <ListBoxItem x:Name="item_procedure" Content="Procedure"/>
+        </ComboBox>
+        <Button x:Name="btn_create_routine" Content="Create Routine" HorizontalAlignment="Left" Margin="92,88,0,0" VerticalAlignment="Top" Width="124" Height="36" Cursor="Hand" Click="btn_create_routine_Click"/>
+
+    </Grid>
+</Window>

@@ -20,7 +20,7 @@ namespace DataBaseManagerWPF.Routines
 
         private void btn_create_routine_Click(object sender, RoutedEventArgs e)
         {
-
+            new RoutineTypeWindow().ShowDialog();
         }
 
         private void btn_drop_routine_Click(object sender, RoutedEventArgs e)
