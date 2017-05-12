@@ -78,6 +78,7 @@
     <Compile Include="Triggers\TriggersWindow.xaml.cs">
       <DependentUpon>TriggersWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utilities.cs" />
     <Compile Include="Views\ViewsWindow.xaml.cs">
       <DependentUpon>ViewsWindow.xaml</DependentUpon>
     </Compile>

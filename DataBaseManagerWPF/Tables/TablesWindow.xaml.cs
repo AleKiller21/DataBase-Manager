@@ -13,16 +13,18 @@ namespace DataBaseManagerWPF.Tables
     /// </summary>
     public partial class TablesWindow : Window
     {
-        private object _selectedTable;
+        private readonly string _projectionQuery;
 
         public TablesWindow()
         {
             InitializeComponent();
+            _projectionQuery =
+                $"SELECT TABSCHEMA, TABNAME FROM SYSCAT.TABLES WHERE TABSCHEMA = '{Connection.CurrentSchema}'";
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            RefreshTableDataGrid();
+            Utilities.RefreshDataGrid(dataGridTables, _projectionQuery);
         }
 
         private void btn_create_table_Click(object sender, RoutedEventArgs e)
@@ -30,14 +32,6 @@ namespace DataBaseManagerWPF.Tables
             const string createCommand = "CREATE TABLE <NAME> (<FIELDS>)";
             var editor = new SqlEditorWindow(createCommand);
             editor.ShowDialog();
-            RefreshTableDataGrid();
-        }
-
-        private void RefreshTableDataGrid()
-        {
-            //TODO Use the current schema instead of a harcoded value or just fetch all tables from SYSCAT.TABLES
-            var query = $"SELECT TABSCHEMA, TABNAME FROM SYSCAT.TABLES WHERE TABSCHEMA = '{Connection.CurrentSchema}'";
-            dataGridTables.ItemsSource = DBUtilities.ProjectData(query).DefaultView;
         }
 
         private void btn_generate_ddl_table_Click(object sender, RoutedEventArgs e)

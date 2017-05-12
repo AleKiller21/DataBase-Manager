@@ -21,9 +21,12 @@ namespace DataBaseManagerWPF.Indexes
     /// </summary>
     public partial class IndexesWindow : Window
     {
+        private string _projectionQuery;
         public IndexesWindow()
         {
             InitializeComponent();
+            _projectionQuery =
+                $"SELECT INDSCHEMA, INDNAME, TABNAME, UNIQUERULE FROM SYSCAT.INDEXES WHERE INDSCHEMA = '{Connection.CurrentSchema}'";
         }
 
         private void btn_create_index_Click(object sender, RoutedEventArgs e)
@@ -76,15 +79,7 @@ namespace DataBaseManagerWPF.Indexes
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            RefreshIndexesDataGrid();
-        }
-
-        private void RefreshIndexesDataGrid()
-        {
-            var query = 
-                $"SELECT INDSCHEMA, INDNAME, TABNAME, UNIQUERULE FROM SYSCAT.INDEXES WHERE INDSCHEMA = '{Connection.CurrentSchema}'";
-
-            dataGridIndexes.ItemsSource = DBUtilities.ProjectData(query).DefaultView;
+            Utilities.RefreshDataGrid(dataGridIndexes, _projectionQuery);
         }
     }
 }

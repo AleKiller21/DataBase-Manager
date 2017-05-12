@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using DataBaseLayer;
 
 namespace DataBaseManagerWPF.Routines
 {
@@ -19,9 +8,12 @@ namespace DataBaseManagerWPF.Routines
     /// </summary>
     public partial class RoutinesWindow : Window
     {
+        private string _projectionQuery;
         public RoutinesWindow()
         {
             InitializeComponent();
+            _projectionQuery =
+                $"SELECT ROUTINESCHEMA, ROUTINENAME, ROUTINETYPE FROM SYSCAT.ROUTINES WHERE ROUTINESCHEMA = '{Connection.CurrentSchema}' AND TEXT IS NOT NULL;";
         }
 
         private void btn_create_routine_Click(object sender, RoutedEventArgs e)
@@ -46,7 +38,7 @@ namespace DataBaseManagerWPF.Routines
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
+            Utilities.RefreshDataGrid(dataGridRoutines, _projectionQuery);
         }
     }
 }
