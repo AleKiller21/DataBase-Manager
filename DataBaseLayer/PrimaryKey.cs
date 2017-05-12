@@ -45,7 +45,18 @@ namespace DataBaseLayer
 
         public override string GenerateAlterTemplate()
         {
-            throw new NotImplementedException();
+            var ddl = $"{GenerateDropDDL()}\n{GenerateDDL()}\n";
+            var query = $"SELECT CONSTNAME, TABNAME, TABSCHEMA FROM SYSCAT.REFERENCES WHERE REFKEYNAME = '{_name}'";
+            var reader = new DB2Command(query, Connection.CurrentConnection).ExecuteReader();
+
+            while (reader.Read())
+            {
+                ddl +=
+                    $"{new ForeignKey(reader["TABSCHEMA"].ToString(), reader["CONSTNAME"].ToString(), reader["TABNAME"].ToString()).GenerateDDL()}\n";
+            }
+
+            reader.Close();
+            return ddl;
         }
 
         public static string GenerateCreateTemplate()
