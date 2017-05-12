@@ -31,7 +31,7 @@
             <Image x:Name="img_views" Source="Assets/Folder-48.png" HorizontalAlignment="Left" Height="54" VerticalAlignment="Top" Width="57"/>
             <Label x:Name="label_Copy2" Content="Views" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="15"/>
         </StackPanel>
-        <StackPanel x:Name="stck_panel_constraints" Margin="269,158,43,30" Orientation="Vertical">
+        <StackPanel x:Name="stck_panel_constraints" Margin="269,158,43,30" Orientation="Vertical" MouseLeftButtonUp="stck_panel_constraints_MouseLeftButtonUp" Cursor="Hand">
             <Image x:Name="img_checks" Source="Assets/Folder-48.png" HorizontalAlignment="Left" Height="54" VerticalAlignment="Top" Width="57" Margin="17,0,0,0"/>
             <Label x:Name="label_Copy1" Content="Constraints" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="15"/>
         </StackPanel>

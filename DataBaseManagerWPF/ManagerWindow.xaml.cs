@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DataBaseLayer;
+using DataBaseManagerWPF.Constraints;
 using DataBaseManagerWPF.Indexes;
 using DataBaseManagerWPF.Routines;
 using DataBaseManagerWPF.Tables;
@@ -31,14 +32,12 @@ namespace DataBaseManagerWPF
 
         private void stck_panel_tables_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            var tables = new TablesWindow();
-            tables.ShowDialog();
+            new TablesWindow().ShowDialog();
         }
 
         private void stck_panel_indexes_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            var indexes = new IndexesWindow();
-            indexes.ShowDialog();
+            new IndexesWindow().ShowDialog();
         }
 
         private void Window_Closed(object sender, EventArgs e)
@@ -48,13 +47,17 @@ namespace DataBaseManagerWPF
 
         private void stck_panel_routines_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            var routines = new RoutinesWindow();
-            routines.ShowDialog();
+            new RoutinesWindow().ShowDialog();
         }
 
         private void stck_panel_views_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             new ViewsWindow().ShowDialog();
+        }
+
+        private void stck_panel_constraints_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            new ConstraintsWindow().ShowDialog();
         }
     }
 }
