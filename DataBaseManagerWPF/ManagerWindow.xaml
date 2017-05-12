@@ -35,7 +35,7 @@
             <Image x:Name="img_checks" Source="Assets/Folder-48.png" HorizontalAlignment="Left" Height="54" VerticalAlignment="Top" Width="57" Margin="17,0,0,0"/>
             <Label x:Name="label_Copy1" Content="Constraints" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="15"/>
         </StackPanel>
-        <StackPanel x:Name="stck_panel_triggers" Grid.Column="1" Margin="18,48,74,135" Orientation="Vertical" Cursor="Hand">
+        <StackPanel x:Name="stck_panel_triggers" Grid.Column="1" Margin="18,48,74,135" Orientation="Vertical" Cursor="Hand" MouseLeftButtonUp="stck_panel_triggers_MouseLeftButtonUp">
             <Image x:Name="img_triggers" Source="Assets/Folder-48.png" HorizontalAlignment="Left" Height="54" VerticalAlignment="Top" Width="57"/>
             <Label x:Name="label_Copy4" Content="Triggers" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="15"/>
         </StackPanel>

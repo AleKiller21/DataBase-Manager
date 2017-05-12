@@ -16,6 +16,7 @@ using DataBaseManagerWPF.Constraints;
 using DataBaseManagerWPF.Indexes;
 using DataBaseManagerWPF.Routines;
 using DataBaseManagerWPF.Tables;
+using DataBaseManagerWPF.Triggers;
 using DataBaseManagerWPF.Views;
 
 namespace DataBaseManagerWPF
@@ -58,6 +59,11 @@ namespace DataBaseManagerWPF
         private void stck_panel_constraints_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             new ConstraintsWindow().ShowDialog();
+        }
+
+        private void stck_panel_triggers_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            new TriggersWindow().ShowDialog();
         }
     }
 }
