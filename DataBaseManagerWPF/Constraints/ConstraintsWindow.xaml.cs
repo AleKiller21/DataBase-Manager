@@ -44,10 +44,17 @@ namespace DataBaseManagerWPF.Constraints
             var row = dataGridConstraints.SelectedItem as DataRowView;
             if (row == null) return;
 
-            var ddl = ConstraintFactory.GetConstraint(row["TABSCHEMA"].ToString(), row["CONSTNAME"].ToString(),
-                row["TABNAME"].ToString(), row["TYPE"].ToString()).GenerateDDL();
+            try
+            {
+                var ddl = ConstraintFactory.GetConstraint(row["TABSCHEMA"].ToString(), row["CONSTNAME"].ToString(),
+                    row["TABNAME"].ToString(), row["TYPE"].ToString()).GenerateDDL();
 
-            new SqlEditorWindow(ddl).Show();
+                new SqlEditorWindow(ddl).Show();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
