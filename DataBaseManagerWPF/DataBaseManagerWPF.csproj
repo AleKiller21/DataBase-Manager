@@ -60,6 +60,9 @@
     <Compile Include="Constraints\ConstraintsWindow.xaml.cs">
       <DependentUpon>ConstraintsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Constraints\ConstraintTypeWindow.xaml.cs">
+      <DependentUpon>ConstraintTypeWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Indexes\IndexesWindow.xaml.cs">
       <DependentUpon>IndexesWindow.xaml</DependentUpon>
     </Compile>
@@ -89,6 +92,10 @@
       <DependentUpon>ViewsWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Constraints\ConstraintsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Constraints\ConstraintTypeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

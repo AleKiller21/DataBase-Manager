@@ -31,8 +31,7 @@ namespace DataBaseManagerWPF.Indexes
 
         private void btn_create_index_Click(object sender, RoutedEventArgs e)
         {
-            var indexTypeWindow = new IndexTypeWindow();
-            indexTypeWindow.ShowDialog();
+            new IndexTypeWindow().ShowDialog();
         }
 
         private void btn_drop_index_Click(object sender, RoutedEventArgs e)

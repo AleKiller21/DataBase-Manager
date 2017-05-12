@@ -31,7 +31,7 @@ namespace DataBaseManagerWPF.Constraints
 
         private void btn_create_constraint_Click(object sender, RoutedEventArgs e)
         {
-
+            new ConstraintTypeWindow().ShowDialog();
         }
 
         private void btn_drop_constraint_Click(object sender, RoutedEventArgs e)
