@@ -1,0 +1,18 @@
+﻿<Window x:Class="DataBaseManagerWPF.Routines.RoutinesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataBaseManagerWPF.Routines"
+        mc:Ignorable="d"
+        Title="Routines" Height="465.349" Width="732.839" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Grid>
+        <DataGrid x:Name="dataGridIndexes" HorizontalAlignment="Left" Margin="11,10,0,10" VerticalAlignment="Stretch" Width="449" IsReadOnly="True" SelectionMode="Single">
+        </DataGrid>
+        <Button x:Name="btn_create_routine" Content="Create Routine" HorizontalAlignment="Left" Margin="519,81,0,0" VerticalAlignment="Top" Width="142" Height="36" Click="btn_create_routine_Click" IsDefault="True" Cursor="Hand"/>
+        <Button x:Name="btn_drop_routine" Content="Dropt Routine" HorizontalAlignment="Left" Margin="519,156,0,0" VerticalAlignment="Top" Width="142" Height="36" Click="btn_drop_routine_Click" Cursor="Hand"/>
+        <Button x:Name="btn_alter_routine" Content="Alter Routine" HorizontalAlignment="Left" Margin="519,237,0,0" VerticalAlignment="Top" Width="142" Height="36" Click="btn_alter_routine_Click" Cursor="Hand"/>
+        <Button x:Name="btn_generate_ddl_routine" Content="Generate DDL" HorizontalAlignment="Left" Margin="519,311,0,0" VerticalAlignment="Top" Width="142" Height="36" Click="btn_generate_ddl_routine_Click" Cursor="Hand"/>
+
+    </Grid>
+</Window>

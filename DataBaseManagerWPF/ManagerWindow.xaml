@@ -19,7 +19,7 @@
             <Image x:Name="img_indexes" Source="Assets/Folder-48.png" HorizontalAlignment="Left" Height="54" VerticalAlignment="Top" Width="57"/>
             <Label x:Name="label_Copy" Content="Indexes" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="15"/>
         </StackPanel>
-        <StackPanel x:Name="stck_panel_routines" Margin="286,48,37,140" Orientation="Vertical" Cursor="Hand">
+        <StackPanel x:Name="stck_panel_routines" Margin="286,48,37,140" Orientation="Vertical" Cursor="Hand" MouseLeftButtonUp="stck_panel_routines_MouseLeftButtonUp">
             <Image x:Name="img_routines" Source="Assets/Folder-48.png" HorizontalAlignment="Left" Height="54" VerticalAlignment="Top" Width="57"/>
             <Label x:Name="label_Copy5" Content="Routines" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="15"/>
         </StackPanel>

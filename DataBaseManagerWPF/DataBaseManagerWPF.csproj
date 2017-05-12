@@ -66,6 +66,9 @@
     <Compile Include="Indexes\IndexTypeWindow.xaml.cs">
       <DependentUpon>IndexTypeWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Routines\RoutinesWindow.xaml.cs">
+      <DependentUpon>RoutinesWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SqlEditorWindow.xaml.cs">
       <DependentUpon>SqlEditorWindow.xaml</DependentUpon>
     </Compile>
@@ -110,6 +113,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ManagerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Routines\RoutinesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

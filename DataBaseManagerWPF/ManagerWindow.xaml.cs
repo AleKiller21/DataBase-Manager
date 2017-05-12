@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DataBaseLayer;
 using DataBaseManagerWPF.Indexes;
+using DataBaseManagerWPF.Routines;
 using DataBaseManagerWPF.Tables;
 
 namespace DataBaseManagerWPF
@@ -42,6 +43,12 @@ namespace DataBaseManagerWPF
         private void Window_Closed(object sender, EventArgs e)
         {
             Connection.Disconnect();
+        }
+
+        private void stck_panel_routines_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            var routines = new RoutinesWindow();
+            routines.ShowDialog();
         }
     }
 }
