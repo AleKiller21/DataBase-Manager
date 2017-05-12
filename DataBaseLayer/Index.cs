@@ -31,7 +31,32 @@ namespace DataBaseLayer
 
         private static string GenerateNormalDDL(string schema, string name)
         {
-            throw new NotImplementedException();
+            var indexQuery =
+                $"SELECT TABNAME, UNIQUERULE FROM SYSCAT.INDEXES WHERE INDSCHEMA = '{schema}' AND INDNAME = '{name}'";
+            var indexColQuery =
+                $"SELECT COLNAME FROM SYSCAT.INDEXCOLUSE WHERE INDSCHEMA = '{schema}' AND INDNAME = '{name}'";
+
+            var ddl = "";
+            var indexReader = new DB2Command(indexQuery, Connection.CurrentConnection).ExecuteReader();
+            var indexColReader = new DB2Command(indexColQuery, Connection.CurrentConnection).ExecuteReader();
+
+            indexReader.Read();
+            var indexTableName = indexReader.GetString(0);
+            var indexUniqueRule = indexReader.GetString(1);
+            indexReader.Close();
+
+            ddl = indexUniqueRule.Equals("U") ? 
+                $"CREATE UNIQUE INDEX {name} ON {indexTableName} (" : $"CREATE INDEX {name} ON {indexTableName} (";
+
+            while (indexColReader.Read())
+            {
+                ddl += indexColReader.GetString(0) + ", ";
+            }
+
+            ddl = ddl.Substring(0, ddl.Length - 2);
+            ddl += ");";
+
+            return ddl;
         }
 
         private static string GeneratePrimaryDDL(string schema, string name)
