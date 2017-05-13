@@ -15,7 +15,7 @@ namespace DataBaseManagerWPF.Views
         {
             InitializeComponent();
             _projectionQuery =
-                $"SELECT VIEWSCHEMA, VIEWNAME FROM SYSCAT.VIEWS WHERE VIEWSCHEMA = '{Connection.CurrentSchema}'";
+                $"SELECT VIEWSCHEMA, VIEWNAME FROM SYSCAT.VIEWS WHERE VIEWSCHEMA = '{Connection.CurrentSchema}' AND VALID = 'Y'";
         }
 
         private void btn_create_view_Click(object sender, RoutedEventArgs e)
