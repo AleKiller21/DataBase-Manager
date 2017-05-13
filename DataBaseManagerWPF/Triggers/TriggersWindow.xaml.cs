@@ -14,7 +14,7 @@ namespace DataBaseManagerWPF.Triggers
         public TriggersWindow()
         {
             InitializeComponent();
-            _projectionQuery = $"SELECT TRIGSCHEMA, TRIGNAME, TABNAME, TRIGTIME, TRIGEVENT FROM SYSCAT.TRIGGERS WHERE TRIGSCHEMA = '{Connection.CurrentSchema}'";
+            _projectionQuery = $"SELECT TRIGSCHEMA, TRIGNAME, TABNAME, TRIGTIME, TRIGEVENT FROM SYSCAT.TRIGGERS WHERE TRIGSCHEMA = '{Connection.CurrentSchema}' AND VALID = 'Y'";
         }
 
         private void btn_create_trigger_Click(object sender, RoutedEventArgs e)

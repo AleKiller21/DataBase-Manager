@@ -57,7 +57,11 @@ namespace DataBaseManagerWPF.Tables
 
         private void btn_drop_table_Click(object sender, RoutedEventArgs e)
         {
+            var row = dataGridTables.SelectedItem as DataRowView;
+            if (row == null) return;
 
+            var query = $"DROP TABLE {row["TABSCHEMA"].ToString()}.{row["TABNAME"].ToString()}";
+            new SqlEditorWindow(query).Show();
         }
 
         private void btn_alter_table_Click(object sender, RoutedEventArgs e)
