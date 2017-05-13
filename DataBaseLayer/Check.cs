@@ -15,7 +15,7 @@ namespace DataBaseLayer
 
         public Check(string schema, string name, string table)
         {
-            _schema = schema;
+            _schema = schema.Trim();
             _name = name;
             _table = table;
         }
@@ -28,7 +28,7 @@ namespace DataBaseLayer
             var reader = new DB2Command(query, Connection.CurrentConnection).ExecuteReader();
 
             reader.Read();
-            var ddl = $"ALTER TABLE {reader["TABNAME"]}\nADD CONSTRAINT {reader["CONSTNAME"]} CHECK ({reader["TEXT"]});";
+            var ddl = $"ALTER TABLE {_schema}.{reader["TABNAME"]}\nADD CONSTRAINT {reader["CONSTNAME"]} CHECK ({reader["TEXT"]})";
 
             reader.Close();
             return ddl;
@@ -36,7 +36,7 @@ namespace DataBaseLayer
 
         public override string GenerateDropDDL()
         {
-            return $"ALTER TABLE {_table} DROP CHECK {_name};";
+            return $"ALTER TABLE {_schema}.{_table} DROP CHECK {_name}";
         }
 
         public override string GenerateAlterTemplate()
@@ -46,7 +46,7 @@ namespace DataBaseLayer
 
         public static string GenerateCreateTemplate()
         {
-            return "ALTER TABLE <TABLE_NAME>\nADD CONSTRAINT <NAME> CHECK (<PREDICATE>);";
+            return $"ALTER TABLE {Connection.CurrentSchema}.<TABLE_NAME>\nADD CONSTRAINT <NAME> CHECK (<PREDICATE>)";
         }
     }
 }

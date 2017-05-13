@@ -19,7 +19,7 @@ namespace DataBaseLayer
 
         public static string GenerateDropDDL(string name)
         {
-            return $"DROP VIEW {name};";
+            return $"DROP VIEW {name}";
         }
 
         public static DB2DataReader GetData(string schema, string name)

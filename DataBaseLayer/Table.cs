@@ -16,12 +16,12 @@ namespace DataBaseLayer
 
             var columnsProjection = new DB2Command(columnsProjectionCommand, Connection.CurrentConnection);
             var dataReader = columnsProjection.ExecuteReader();
-            var tableDDL = $"CREATE TABLE {tableName} (\n";
+            var tableDDL = $"CREATE TABLE {tableSchema.ToUpper()}.{tableName} (\n";
 
             while (dataReader.Read())
             {
                 tableDDL += dataReader["COLNAME"] as string + " " + dataReader["TYPENAME"];
-                if (dataReader["STRINGUNITSLENGTH"] != null) tableDDL += "(" + dataReader["LENGTH"] + ")";
+                if (dataReader["STRINGUNITSLENGTH"].ToString() != "NULL") tableDDL += "(" + dataReader["LENGTH"] + ")";
                 if (dataReader["NULLS"] as string == "N") tableDDL += " NOT NULL,\n";
                 else tableDDL += ",\n";
             }

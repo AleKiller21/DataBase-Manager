@@ -32,13 +32,13 @@ namespace DataBaseManagerWPF.Tables
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var query = $"SELECT * FROM {_scheme}.{_table}";
+            var query = $"SELECT * FROM {_scheme.Trim()}.{_table}";
             Utilities.RefreshDataGrid(dataGrid, query);
         }
 
         private void btn_insert_Click(object sender, RoutedEventArgs e)
         {
-            var query = $"INSERT INTO {_scheme}.{_table} VALUES (<VALUES>)";
+            var query = $"INSERT INTO {_scheme.Trim()}.{_table} VALUES (<VALUES>)";
             new SqlEditorWindow(query).Show();
         }
 
@@ -47,7 +47,7 @@ namespace DataBaseManagerWPF.Tables
             var row = dataGrid.SelectedItem as DataRowView;
             if (row == null) return;
 
-            var query = $"DELETE FROM {_scheme}.{_table} WHERE {dataGrid.Columns[0].Header} = {row[0]}";
+            var query = $"DELETE FROM {_scheme.Trim()}.{_table} WHERE {dataGrid.Columns[0].Header} = {row[0]}";
             new SqlEditorWindow(query).Show();
         }
 
@@ -56,7 +56,7 @@ namespace DataBaseManagerWPF.Tables
             var row = dataGrid.SelectedItem as DataRowView;
             if(row == null) return;
 
-            var query = $"UPDATE {_scheme}.{_table} SET <VALUES> WHERE {dataGrid.Columns[0].Header} = {row[0]}";
+            var query = $"UPDATE {_scheme.Trim()}.{_table} SET <VALUES> WHERE {dataGrid.Columns[0].Header} = {row[0]}";
             new SqlEditorWindow(query).Show();
         }
     }

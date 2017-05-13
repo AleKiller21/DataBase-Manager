@@ -15,7 +15,7 @@ namespace DataBaseLayer
 
         public ForeignKey(string schema, string name, string table)
         {
-            _schema = schema;
+            _schema = schema.Trim();
             _name = name;
             _table = table;
         }
@@ -40,7 +40,7 @@ namespace DataBaseLayer
             var refColNameQuery = $"SELECT COLNAME FROM SYSCAT.KEYCOLUSE WHERE CONSTNAME = '{refKeyReader.GetString(0)}'";
             var refColReader = new DB2Command(refColNameQuery, Connection.CurrentConnection).ExecuteReader();
 
-            var fkDll = $"ALTER TABLE {_table}\nADD CONSTRAINT {_name} FOREIGN KEY(";
+            var fkDll = $"ALTER TABLE {_schema}.{_table}\nADD CONSTRAINT {_name} FOREIGN KEY(";
 
             while (colNameReader.Read())
             {
@@ -56,7 +56,7 @@ namespace DataBaseLayer
             }
 
             fkDll = fkDll.Substring(0, fkDll.Length - 2);
-            fkDll += ");";
+            fkDll += ")";
 
             refTableReader.Close();
             refKeyReader.Close();
@@ -68,7 +68,7 @@ namespace DataBaseLayer
 
         public override string GenerateDropDDL()
         {
-            return $"ALTER TABLE {_table} DROP FOREIGN KEY {_name};";
+            return $"ALTER TABLE {_schema}.{_table} DROP FOREIGN KEY {_name}";
         }
 
         public override string GenerateAlterTemplate()
@@ -78,7 +78,7 @@ namespace DataBaseLayer
 
         public static string GenerateCreateTemplate()
         {
-            return "ALTER TABLE <TABLE_NAME>\nADD CONSTRAINT <NAME> FOREIGN KEY (<TABLE_COLUMN>) REFERENCES <REFERENCED TABLE>(<REFERENCED TABLE COLUMN>);";
+            return $"ALTER TABLE {Connection.CurrentSchema}.<TABLE_NAME>\nADD CONSTRAINT <NAME> FOREIGN KEY (<TABLE_COLUMN>) REFERENCES <REFERENCED TABLE>(<REFERENCED TABLE COLUMN>)";
         }
     }
 }

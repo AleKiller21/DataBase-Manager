@@ -40,7 +40,7 @@ namespace DataBaseManagerWPF
             var row = dataSchemasGrid.SelectedItem as DataRowView;
             if(row == null) return;
 
-            Connection.CurrentSchema = row["SCHEMANAME"].ToString();
+            Connection.CurrentSchema = row["SCHEMANAME"].ToString().Trim();
             Close();
         }
     }

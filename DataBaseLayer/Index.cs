@@ -23,7 +23,7 @@ namespace DataBaseLayer
 
         public static string GenerateDropDDL(string schema, string name)
         {
-            return $"DROP INDEX {schema}.{name}";
+            return $"DROP INDEX {schema.Trim()}.{name}";
         }
 
         private static string GenerateNormalDDL(string schema, string name)
@@ -43,7 +43,7 @@ namespace DataBaseLayer
             indexReader.Close();
 
             ddl = indexUniqueRule.Equals("U") ? 
-                $"CREATE UNIQUE INDEX {name} ON {indexTableName} (" : $"CREATE INDEX {name} ON {indexTableName} (";
+                $"CREATE UNIQUE INDEX {schema.Trim()}.{name} ON {indexTableName} (" : $"CREATE INDEX {schema.Trim()}.{name} ON {indexTableName} (";
 
             while (indexColReader.Read())
             {
@@ -66,7 +66,7 @@ namespace DataBaseLayer
             tabNameReader.Read();
 
             var tableName = tabNameReader.GetString(0);
-            var ddl = $"ALTER TABLE {tableName}\nADD CONSTRAINT {name} PRIMARY KEY ";
+            var ddl = $"ALTER TABLE {schema.Trim()}.{tableName}\nADD CONSTRAINT {name} PRIMARY KEY ";
 
             while (colNameReader.Read())
             {

@@ -31,7 +31,7 @@ namespace DataBaseManagerWPF.Tables
 
         private void btn_create_table_Click(object sender, RoutedEventArgs e)
         {
-            const string createCommand = "CREATE TABLE <NAME> (<FIELDS>) ORGANIZE BY ROW";
+            string createCommand = $"CREATE TABLE {Connection.CurrentSchema}.<NAME> (<FIELDS>) ORGANIZE BY ROW";
             var editor = new SqlEditorWindow(createCommand);
             editor.ShowDialog();
         }

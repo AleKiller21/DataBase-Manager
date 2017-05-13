@@ -15,7 +15,7 @@ namespace DataBaseLayer
 
         public PrimaryKey(string schema, string name, string table)
         {
-            _schema = schema;
+            _schema = schema.Trim();
             _name = name;
             _table = table;
         }
@@ -27,16 +27,16 @@ namespace DataBaseLayer
 
         public override string GenerateDropDDL()
         {
-            var query = $"SELECT CONSTNAME, TABNAME FROM SYSCAT.REFERENCES WHERE REFKEYNAME = '{_name}'";
+            var query = $"SELECT CONSTNAME, TABNAME, TABSCHEMA FROM SYSCAT.REFERENCES WHERE REFKEYNAME = '{_name}'";
             var reader = new DB2Command(query, Connection.CurrentConnection).ExecuteReader();
             var ddl = "";
 
             while (reader.Read())
             {
-                ddl += $"ALTER TABLE {reader["TABNAME"]} DROP FOREIGN KEY {reader["CONSTNAME"]};\n";
+                ddl += $"ALTER TABLE {reader["TABSCHEMA"]}.{reader["TABNAME"]} DROP FOREIGN KEY {reader["CONSTNAME"]};\n";
             }
 
-            ddl += $"ALTER TABLE {_table} DROP PRIMARY KEY;";
+            ddl += $"ALTER TABLE {_schema}.{_table} DROP PRIMARY KEY";
 
             reader.Close();
             return ddl;
@@ -61,7 +61,7 @@ namespace DataBaseLayer
 
         public static string GenerateCreateTemplate()
         {
-            return "ALTER TABLE <TABLE_NAME>\nADD CONSTRAINT <NAME> PRIMARY KEY (COLUMN);";
+            return $"ALTER TABLE {Connection.CurrentSchema}.<TABLE_NAME>\nADD CONSTRAINT <NAME> PRIMARY KEY (COLUMN)";
         }
     }
 }

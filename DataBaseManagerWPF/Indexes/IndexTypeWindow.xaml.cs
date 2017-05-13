@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DataBaseLayer;
 
 namespace DataBaseManagerWPF.Indexes
 {
@@ -31,14 +32,14 @@ namespace DataBaseManagerWPF.Indexes
             switch (cmb_index_type.SelectedIndex)
             {
                 case 0:
-                    ddl = @"ALTER TABLE <TABLE NAME>
-ADD CONSTRAINT <CONSTRAINT NAME> PRIMARY KEY (<COLUMN>);";
+                    ddl = $@"ALTER TABLE {Connection.CurrentSchema}.<TABLE NAME>
+ADD CONSTRAINT <CONSTRAINT NAME> PRIMARY KEY (<COLUMN>)";
                     break;
                 case 1:
-                    ddl = "CREATE UNIQUE INDEX<NAME> ON<TABLE NAME> (< COLUMNS >);";
+                    ddl = $"CREATE UNIQUE {Connection.CurrentSchema}.INDEX<NAME> ON {Connection.CurrentSchema}.<TABLE NAME> (< COLUMNS >);";
                     break;
                 default:
-                    ddl = "CREATE INDEX<NAME> ON<TABLE NAME> (< COLUMNS >);";
+                    ddl = $"CREATE {Connection.CurrentSchema}.INDEX<NAME> ON {Connection.CurrentSchema}.<TABLE NAME> (< COLUMNS >);";
                     break;
             }
 

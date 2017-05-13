@@ -20,7 +20,7 @@ namespace DataBaseManagerWPF.Views
 
         private void btn_create_view_Click(object sender, RoutedEventArgs e)
         {
-            new SqlEditorWindow("CREATE OR REPLACE VIEW <VIEW_NAME> AS\n<PROJECTION>").Show();
+            new SqlEditorWindow($"CREATE OR REPLACE VIEW {Connection.CurrentSchema}.<VIEW_NAME> AS\n<PROJECTION>").Show();
         }
 
         private void btn_drop_view_Click(object sender, RoutedEventArgs e)

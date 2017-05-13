@@ -23,7 +23,7 @@ namespace DataBaseLayer
 
         public static string GenerateCreateTemplate()
         {
-            return @"CREATE OR REPLACE TRIGGER <TRIGGER NAME>
+            return $@"CREATE OR REPLACE TRIGGER {Connection.CurrentSchema.Trim()}.<TRIGGER NAME>
 <AFTER || BEFORE || INSTEAD OF> <TRIGGER EVENT> ON <TABLE NAME>
 <FOR EACH ROW || FOR EACH STATEMENT || REFERENCING>
 <TRIGGERED ACTION>";
@@ -31,7 +31,7 @@ namespace DataBaseLayer
 
         public static string GenerateDropDDL(string schema, string name)
         {
-            return $"DROP TRIGGER {schema}.{name}";
+            return $"DROP TRIGGER {schema.Trim()}.{name}";
         }
     }
 }

@@ -40,7 +40,7 @@ namespace DataBaseManagerWPF.Tables
 
         private void btn_add_field_Click(object sender, RoutedEventArgs e)
         {
-            var query = $"ALTER TABLE {_name}\nADD COLUMN <COLUMN_NAME DATA_TYPE>";
+            var query = $"ALTER TABLE {_schema.ToUpper().Trim()}.{_name}\nADD COLUMN <COLUMN_NAME DATA_TYPE>";
             new SqlEditorWindow(query).Show();
         }
 
@@ -49,7 +49,7 @@ namespace DataBaseManagerWPF.Tables
             var row = dataGridFields.SelectedItem as DataRowView;
             if(row == null) return;
 
-            var query = $"ALTER TABLE {_name}\nDROP COLUMN {row["COLNAME"]}";
+            var query = $"ALTER TABLE {_schema.ToUpper().Trim()}.{_name}\nDROP COLUMN {row["COLNAME"]}";
             new SqlEditorWindow(query).Show();
         }
 
@@ -58,7 +58,7 @@ namespace DataBaseManagerWPF.Tables
             var row = dataGridFields.SelectedItem as DataRowView;
             if (row == null) return;
 
-            var query = $"ALTER TABLE {_name}\nALTER COLUMN {row["COLNAME"]} SET DATA TYPE <TYPE>";
+            var query = $"ALTER TABLE {_schema.ToUpper().Trim()}.{_name}\nALTER COLUMN {row["COLNAME"]} SET DATA TYPE <TYPE>";
             new SqlEditorWindow(query).Show();
         }
     }

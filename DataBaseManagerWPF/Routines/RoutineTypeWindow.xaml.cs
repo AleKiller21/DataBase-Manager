@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DataBaseLayer;
 
 namespace DataBaseManagerWPF.Routines
 {
@@ -34,7 +35,7 @@ namespace DataBaseManagerWPF.Routines
 
         private string GenerateFunctionDDL()
         {
-            return @"CREATE OR REPLACE FUNCTION <NAME> ()
+            return $@"CREATE OR REPLACE FUNCTION {Connection.CurrentSchema}.<NAME> ()
 	RETURNS INTEGER
 	NO EXTERNAL ACTION
 F1: BEGIN ATOMIC
@@ -52,7 +53,7 @@ END";
 
         private string GenerateProcedureDDL()
         {
-            return @"CREATE OR REPLACE PROCEDURE <NAME> (IN VARNAME VARCHAR(128), OUT VARCOUNT INTEGER)
+            return $@"CREATE OR REPLACE PROCEDURE {Connection.CurrentSchema}.<NAME> (IN VARNAME VARCHAR(128), OUT VARCOUNT INTEGER)
 P1: BEGIN
 	-- #######################################################################
 	-- # Returns count of tables created by BLUADMIN and like VARNAME

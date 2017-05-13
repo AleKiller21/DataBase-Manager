@@ -40,7 +40,7 @@
             <Label x:Name="label_Copy4" Content="Triggers" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="15"/>
         </StackPanel>
         <Button x:Name="btn_editor" Content="SQL Editor" Grid.Column="1" HorizontalAlignment="Left" Margin="60,10,0,0" VerticalAlignment="Top" Width="99" Height="33" Click="btn_editor_Click"/>
-        <StackPanel x:Name="stck_panel_schemas" Margin="398,158,120,51" Orientation="Vertical" MouseLeftButtonUp="stck_panel_schemas_MouseLeftButtonUp" Grid.ColumnSpan="2">
+        <StackPanel x:Name="stck_panel_schemas" Margin="398,158,120,51" Orientation="Vertical" MouseLeftButtonUp="stck_panel_schemas_MouseLeftButtonUp" Grid.ColumnSpan="2" Cursor="Hand">
             <Image x:Name="img_checks1" Source="Assets/Folder-48.png" HorizontalAlignment="Left" Height="54" VerticalAlignment="Top" Width="57" Margin="5,0,0,0"/>
             <Label x:Name="label_Copy6" Content="Schemas" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="15"/>
         </StackPanel>

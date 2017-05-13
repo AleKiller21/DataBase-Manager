@@ -17,9 +17,9 @@ namespace DataBaseLayer
             return ddl;
         }
 
-        public static string GenerateDropDDL(string name, string type)
+        public static string GenerateDropDDL(string name, string type, string schema)
         {
-            return type.Equals("F") ? $"DROP FUNCTION {name}" : $"DROP PROCEDURE {name}";
+            return type.Equals("F") ? $"DROP FUNCTION {schema.Trim()}.{name}" : $"DROP PROCEDURE {schema.Trim()}.{name}";
         }
     }
 }
