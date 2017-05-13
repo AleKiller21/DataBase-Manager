@@ -17,6 +17,7 @@ namespace DataBaseLayer
             var data = new DataTable();
             data.Load(result);
 
+            result.Close();
             return data;
         }
     }

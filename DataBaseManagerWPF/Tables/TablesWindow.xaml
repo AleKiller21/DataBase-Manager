@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Tables" Height="465.349" Width="732.839" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
-        <DataGrid x:Name="dataGridTables" HorizontalAlignment="Left" Margin="11,10,0,10" VerticalAlignment="Stretch" Width="449" IsReadOnly="True" SelectionMode="Single">
+        <DataGrid x:Name="dataGridTables" HorizontalAlignment="Left" Margin="11,10,0,10" VerticalAlignment="Stretch" Width="449" IsReadOnly="True" SelectionMode="Single" MouseDoubleClick="dataGridTables_MouseDoubleClick">
         </DataGrid>
         <Button x:Name="btn_create_table" Content="Create Table" HorizontalAlignment="Left" Margin="519,81,0,0" VerticalAlignment="Top" Width="142" Height="36" Click="btn_create_table_Click" IsDefault="True" Cursor="Hand"/>
         <Button x:Name="btn_drop_table" Content="Dropt Table" HorizontalAlignment="Left" Margin="519,156,0,0" VerticalAlignment="Top" Width="142" Height="36" Click="btn_drop_table_Click" Cursor="Hand"/>

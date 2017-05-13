@@ -21,7 +21,7 @@ namespace DataBaseManagerWPF.Tables
         {
             InitializeComponent();
             _projectionQuery =
-                $"SELECT TABSCHEMA, TABNAME FROM SYSCAT.TABLES WHERE TABSCHEMA = '{Connection.CurrentSchema}'";
+                $"SELECT TABSCHEMA, TABNAME FROM SYSCAT.TABLES WHERE TABSCHEMA = '{Connection.CurrentSchema}' AND TYPE = 'T'";
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -63,6 +63,14 @@ namespace DataBaseManagerWPF.Tables
         private void btn_alter_table_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void dataGridTables_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var row = dataGridTables.SelectedItem as DataRowView;
+            if(row == null) return;
+
+            new TableDataBrowser(row["TABSCHEMA"].ToString(), row["TABNAME"].ToString()).Show();
         }
     }
 }

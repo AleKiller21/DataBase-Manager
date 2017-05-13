@@ -78,6 +78,9 @@
     <Compile Include="SqlEditorWindow.xaml.cs">
       <DependentUpon>SqlEditorWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Tables\TableDataBrowser.xaml.cs">
+      <DependentUpon>TableDataBrowser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Tables\TablesWindow.xaml.cs">
       <DependentUpon>TablesWindow.xaml</DependentUpon>
     </Compile>
@@ -139,6 +142,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SqlEditorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tables\TableDataBrowser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
