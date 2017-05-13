@@ -17,6 +17,7 @@ using DataBaseManagerWPF.Indexes;
 using DataBaseManagerWPF.Routines;
 using DataBaseManagerWPF.Tables;
 using DataBaseManagerWPF.Triggers;
+using DataBaseManagerWPF.Users;
 using DataBaseManagerWPF.Views;
 
 namespace DataBaseManagerWPF
@@ -64,6 +65,16 @@ namespace DataBaseManagerWPF
         private void stck_panel_triggers_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             new TriggersWindow().ShowDialog();
+        }
+
+        private void btn_editor_Click(object sender, RoutedEventArgs e)
+        {
+            new SqlEditorWindow().Show();
+        }
+
+        private void stck_panel_users_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            new UsersWindow().Show();
         }
     }
 }

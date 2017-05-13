@@ -23,7 +23,7 @@
             <Image x:Name="img_routines" Source="Assets/Folder-48.png" HorizontalAlignment="Left" Height="54" VerticalAlignment="Top" Width="57"/>
             <Label x:Name="label_Copy5" Content="Routines" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="15"/>
         </StackPanel>
-        <StackPanel x:Name="stck_panel_users" Margin="62,158,276,30" Orientation="Vertical" Cursor="Hand">
+        <StackPanel x:Name="stck_panel_users" Margin="62,158,276,30" Orientation="Vertical" Cursor="Hand" MouseLeftButtonUp="stck_panel_users_MouseLeftButtonUp">
             <Image x:Name="img_users" Source="Assets/Folder-48.png" HorizontalAlignment="Left" Height="54" VerticalAlignment="Top" Width="58"/>
             <Label x:Name="label_Copy3" Content="Users" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="15"/>
         </StackPanel>
@@ -39,5 +39,6 @@
             <Image x:Name="img_triggers" Source="Assets/Folder-48.png" HorizontalAlignment="Left" Height="54" VerticalAlignment="Top" Width="57"/>
             <Label x:Name="label_Copy4" Content="Triggers" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="15"/>
         </StackPanel>
+        <Button x:Name="btn_editor" Content="SQL Editor" Grid.Column="1" HorizontalAlignment="Left" Margin="10,171,0,0" VerticalAlignment="Top" Width="118" Height="43" Click="btn_editor_Click"/>
     </Grid>
 </Window>

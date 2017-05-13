@@ -90,6 +90,9 @@
     <Compile Include="Triggers\TriggersWindow.xaml.cs">
       <DependentUpon>TriggersWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Users\UsersWindow.xaml.cs">
+      <DependentUpon>UsersWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utilities.cs" />
     <Compile Include="Views\ViewDataBrowser.xaml.cs">
       <DependentUpon>ViewDataBrowser.xaml</DependentUpon>
@@ -161,6 +164,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Triggers\TriggersWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Users\UsersWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
