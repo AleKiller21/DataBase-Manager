@@ -66,7 +66,10 @@ namespace DataBaseManagerWPF.Tables
 
         private void btn_alter_table_Click(object sender, RoutedEventArgs e)
         {
+            var row = dataGridTables.SelectedItem as DataRowView;
+            if (row == null) return;
 
+            new TableFieldsBrowser(row["TABSCHEMA"].ToString(), row["TABNAME"].ToString()).Show();
         }
 
         private void dataGridTables_MouseDoubleClick(object sender, MouseButtonEventArgs e)
