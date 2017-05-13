@@ -68,7 +68,8 @@ namespace DataBaseManagerWPF
                 return;
             }
 
-            var manager = new ManagerWindow();
+            var source = connString.Split(':')[0].Substring(7);
+            var manager = new ManagerWindow(connInformation.InitialCatalog, connInformation.UserID, source);
             manager.Show();
             Close();
         }

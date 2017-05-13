@@ -27,9 +27,18 @@ namespace DataBaseManagerWPF
     /// </summary>
     public partial class ManagerWindow : Window
     {
-        public ManagerWindow()
+        private readonly string _database;
+        private readonly string _userId;
+        private readonly string _source;
+
+        public ManagerWindow(string database, string userId, string source)
         {
             InitializeComponent();
+            _database = database;
+            _userId = userId;
+            _source = source;
+
+            Title = $"Connection: {this._source} - {this._database} [{this._userId}] - Schema: {Connection.CurrentSchema}";
         }
 
         private void stck_panel_tables_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -74,7 +83,18 @@ namespace DataBaseManagerWPF
 
         private void stck_panel_users_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            new UsersWindow().Show();
+            new UsersWindow().ShowDialog();
+        }
+
+        private void stck_panel_schemas_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            new SchemasWindow().ShowDialog();
+            SetSchema();
+        }
+
+        private void SetSchema()
+        {
+            Title = $"Connection: {_source} - {_database} [{_userId}] - Schema: {Connection.CurrentSchema}";
         }
     }
 }
