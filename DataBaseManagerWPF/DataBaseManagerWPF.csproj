@@ -60,14 +60,45 @@
     <Compile Include="Constraints\ConstraintsWindow.xaml.cs">
       <DependentUpon>ConstraintsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Constraints\ConstraintTypeWindow.xaml.cs">
+      <DependentUpon>ConstraintTypeWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Indexes\IndexesWindow.xaml.cs">
       <DependentUpon>IndexesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Indexes\IndexTypeWindow.xaml.cs">
+      <DependentUpon>IndexTypeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Routines\RoutinesWindow.xaml.cs">
+      <DependentUpon>RoutinesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Routines\RoutineTypeWindow.xaml.cs">
+      <DependentUpon>RoutineTypeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SchemasWindow.xaml.cs">
+      <DependentUpon>SchemasWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SqlEditorWindow.xaml.cs">
+      <DependentUpon>SqlEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\TableDataBrowser.xaml.cs">
+      <DependentUpon>TableDataBrowser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tables\TableFieldsBrowser.xaml.cs">
+      <DependentUpon>TableFieldsBrowser.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tables\TablesWindow.xaml.cs">
       <DependentUpon>TablesWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Triggers\TriggersWindow.xaml.cs">
       <DependentUpon>TriggersWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Users\UsersWindow.xaml.cs">
+      <DependentUpon>UsersWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities.cs" />
+    <Compile Include="Views\ViewDataBrowser.xaml.cs">
+      <DependentUpon>ViewDataBrowser.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewsWindow.xaml.cs">
       <DependentUpon>ViewsWindow.xaml</DependentUpon>
@@ -76,11 +107,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Constraints\ConstraintTypeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CreateConnection.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Indexes\IndexesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Indexes\IndexTypeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -103,11 +142,43 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Routines\RoutinesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Routines\RoutineTypeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SchemasWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SqlEditorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tables\TableDataBrowser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tables\TableFieldsBrowser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Tables\TablesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Triggers\TriggersWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Users\UsersWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewDataBrowser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

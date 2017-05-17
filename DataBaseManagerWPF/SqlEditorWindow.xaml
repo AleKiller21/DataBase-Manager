@@ -1,0 +1,29 @@
+﻿<Window x:Class="DataBaseManagerWPF.SqlEditorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataBaseManagerWPF"
+        mc:Ignorable="d"
+        Title="SQL Editor" Height="782.133" Width="1178.266" MinWidth="612.712" MinHeight="392.797" ResizeMode="CanMinimize">
+    <Grid>
+        <Button  x:Name="btn_run" Content="Run SQL" Margin="0,10,19,0" VerticalAlignment="Top" Height="38" Click="btn_run_Click" HorizontalAlignment="Right" Width="114"/>
+        <TextBox x:Name="txt_command"
+            TextWrapping="Wrap"
+            AcceptsReturn="True"
+            HorizontalScrollBarVisibility="Disabled"
+            VerticalScrollBarVisibility="Auto" Margin="14,63,19,199"/>
+        <TabControl x:Name="tabControl" Height="184" Margin="0,559,0,0" VerticalAlignment="Top" Width="1153" HorizontalAlignment="Left">
+            <TabItem Header="Result">
+                <DataGrid Name="DataGridResult"></DataGrid>
+            </TabItem>
+            <TabItem Header="Status">
+                <TextBox x:Name="txt_status"
+                         TextWrapping="Wrap"
+                         AcceptsReturn="True"
+                         HorizontalScrollBarVisibility="Disabled"
+                         VerticalScrollBarVisibility="Auto" IsEnabled="False" FontSize="16"/>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

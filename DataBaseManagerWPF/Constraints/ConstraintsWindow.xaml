@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DataBaseManagerWPF.Constraints"
         mc:Ignorable="d"
-        Title="ConstraintsWindow" Height="300" Width="300">
+        Title="Constraints" Height="465.349" Width="732.839" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
-        
+        <DataGrid x:Name="dataGridConstraints" HorizontalAlignment="Left" Margin="11,10,0,10" VerticalAlignment="Stretch" Width="449" IsReadOnly="True" SelectionMode="Single" Cursor="Hand">
+        </DataGrid>
+        <Button x:Name="btn_create_constraint" Content="Create Constraint" HorizontalAlignment="Left" Margin="519,53,0,0" VerticalAlignment="Top" Width="142" Height="36" Click="btn_create_constraint_Click" IsDefault="True" Cursor="Hand"/>
+        <Button x:Name="btn_drop_constraint" Content="Drop Constraint" HorizontalAlignment="Left" Margin="519,147,0,0" VerticalAlignment="Top" Width="142" Height="36" Click="btn_drop_constraint_Click" Cursor="Hand"/>
+        <Button x:Name="btn_generate_ddl_constraint" Content="Generate DDL" HorizontalAlignment="Left" Margin="519,327,0,0" VerticalAlignment="Top" Width="142" Height="36" Click="btn_generate_ddl_constraint_Click" Cursor="Hand" RenderTransformOrigin="0.5,0.694"/>
+        <Button x:Name="btn_alter_constraint_" Content="Alter Constraint" HorizontalAlignment="Left" Margin="519,234,0,0" VerticalAlignment="Top" Width="142" Height="36" Click="btn_alter_constraint_Click" Cursor="Hand"/>
+
     </Grid>
 </Window>

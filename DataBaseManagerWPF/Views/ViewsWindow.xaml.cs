@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using DataBaseLayer;
 
 namespace DataBaseManagerWPF.Views
 {
@@ -19,9 +9,47 @@ namespace DataBaseManagerWPF.Views
     /// </summary>
     public partial class ViewsWindow : Window
     {
+        private readonly string _projectionQuery;
+
         public ViewsWindow()
         {
             InitializeComponent();
+            _projectionQuery =
+                $"SELECT VIEWSCHEMA, VIEWNAME FROM SYSCAT.VIEWS WHERE VIEWSCHEMA = '{Connection.CurrentSchema}' AND VALID = 'Y'";
+        }
+
+        private void btn_create_view_Click(object sender, RoutedEventArgs e)
+        {
+            new SqlEditorWindow($"CREATE OR REPLACE VIEW {Connection.CurrentSchema}.<VIEW_NAME> AS\n<PROJECTION>").Show();
+        }
+
+        private void btn_drop_view_Click(object sender, RoutedEventArgs e)
+        {
+            var row = dataGridViews.SelectedItem as DataRowView;
+            if(row == null) return;
+
+            new SqlEditorWindow(View.GenerateDropDDL($"{Connection.CurrentSchema}.{row["VIEWNAME"]}")).Show();
+        }
+
+        private void btn_generate_ddl_view_Click(object sender, RoutedEventArgs e)
+        {
+            var row = dataGridViews.SelectedItem as DataRowView;
+            if(row == null) return;
+
+            new SqlEditorWindow(View.GenerateDDL(row["VIEWSCHEMA"].ToString(), row["VIEWNAME"].ToString())).Show();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Utilities.RefreshDataGrid(dataGridViews, _projectionQuery);
+        }
+
+        private void dataGridViews_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var row = dataGridViews.SelectedItem as DataRowView;
+            if(row == null) return;
+
+            new ViewDataBrowser(row["VIEWSCHEMA"].ToString(), row["VIEWNAME"].ToString()).Show();
         }
     }
 }

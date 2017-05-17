@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DataBaseManagerWPF"
         mc:Ignorable="d"
-        Title="Manager" Height="302.543" Width="561.864" WindowStartupLocation="CenterScreen">
+        Title="Manager" Height="324.081" Width="598.018" WindowStartupLocation="CenterScreen" Closed="Window_Closed" ResizeMode="CanMinimize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="113*"/>
@@ -19,25 +19,30 @@
             <Image x:Name="img_indexes" Source="Assets/Folder-48.png" HorizontalAlignment="Left" Height="54" VerticalAlignment="Top" Width="57"/>
             <Label x:Name="label_Copy" Content="Indexes" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="15"/>
         </StackPanel>
-        <StackPanel x:Name="stck_panel_routines" Margin="286,48,37,140" Orientation="Vertical" Cursor="Hand">
+        <StackPanel x:Name="stck_panel_routines" Margin="286,48,37,140" Orientation="Vertical" Cursor="Hand" MouseLeftButtonUp="stck_panel_routines_MouseLeftButtonUp">
             <Image x:Name="img_routines" Source="Assets/Folder-48.png" HorizontalAlignment="Left" Height="54" VerticalAlignment="Top" Width="57"/>
             <Label x:Name="label_Copy5" Content="Routines" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="15"/>
         </StackPanel>
-        <StackPanel x:Name="stck_panel_users" Margin="62,158,276,30" Orientation="Vertical" Cursor="Hand">
+        <StackPanel x:Name="stck_panel_users" Margin="62,158,276,30" Orientation="Vertical" Cursor="Hand" MouseLeftButtonUp="stck_panel_users_MouseLeftButtonUp">
             <Image x:Name="img_users" Source="Assets/Folder-48.png" HorizontalAlignment="Left" Height="54" VerticalAlignment="Top" Width="58"/>
             <Label x:Name="label_Copy3" Content="Users" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="15"/>
         </StackPanel>
-        <StackPanel x:Name="stck_panel_views" Margin="174,158,165,30" Orientation="Vertical" Cursor="Hand">
+        <StackPanel x:Name="stck_panel_views" Margin="174,158,165,30" Orientation="Vertical" Cursor="Hand" MouseLeftButtonUp="stck_panel_views_MouseLeftButtonUp">
             <Image x:Name="img_views" Source="Assets/Folder-48.png" HorizontalAlignment="Left" Height="54" VerticalAlignment="Top" Width="57"/>
             <Label x:Name="label_Copy2" Content="Views" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="15"/>
         </StackPanel>
-        <StackPanel x:Name="stck_panel_constraints" Margin="269,158,43,30" Orientation="Vertical">
+        <StackPanel x:Name="stck_panel_constraints" Margin="269,158,43,30" Orientation="Vertical" MouseLeftButtonUp="stck_panel_constraints_MouseLeftButtonUp" Cursor="Hand">
             <Image x:Name="img_checks" Source="Assets/Folder-48.png" HorizontalAlignment="Left" Height="54" VerticalAlignment="Top" Width="57" Margin="17,0,0,0"/>
             <Label x:Name="label_Copy1" Content="Constraints" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="15"/>
         </StackPanel>
-        <StackPanel x:Name="stck_panel_triggers" Grid.Column="1" Margin="18,48,74,135" Orientation="Vertical" Cursor="Hand">
+        <StackPanel x:Name="stck_panel_triggers" Margin="398,48,127,155" Orientation="Vertical" Cursor="Hand" MouseLeftButtonUp="stck_panel_triggers_MouseLeftButtonUp" Grid.ColumnSpan="2">
             <Image x:Name="img_triggers" Source="Assets/Folder-48.png" HorizontalAlignment="Left" Height="54" VerticalAlignment="Top" Width="57"/>
             <Label x:Name="label_Copy4" Content="Triggers" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="15"/>
+        </StackPanel>
+        <Button x:Name="btn_editor" Content="SQL Editor" Grid.Column="1" HorizontalAlignment="Left" Margin="60,10,0,0" VerticalAlignment="Top" Width="99" Height="33" Click="btn_editor_Click"/>
+        <StackPanel x:Name="stck_panel_schemas" Margin="398,158,120,51" Orientation="Vertical" MouseLeftButtonUp="stck_panel_schemas_MouseLeftButtonUp" Grid.ColumnSpan="2" Cursor="Hand">
+            <Image x:Name="img_checks1" Source="Assets/Folder-48.png" HorizontalAlignment="Left" Height="54" VerticalAlignment="Top" Width="57" Margin="5,0,0,0"/>
+            <Label x:Name="label_Copy6" Content="Schemas" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="15"/>
         </StackPanel>
     </Grid>
 </Window>

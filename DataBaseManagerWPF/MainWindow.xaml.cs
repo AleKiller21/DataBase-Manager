@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Windows;
@@ -51,12 +52,24 @@ namespace DataBaseManagerWPF
 
         private void dataGrid_Connections_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            //var name = GetConnectionSelectedName();
-            //var connString = new SqlConnectionStringBuilder(ConfigurationManager.ConnectionStrings[name].ConnectionString).DataSource;
+            var name = GetConnectionSelectedName();
+            var connInformation =
+                new SqlConnectionStringBuilder(ConfigurationManager.ConnectionStrings[name].ConnectionString);
 
-            //Connection.Connect(connString);
-            
-            var manager = new ManagerWindow();
+            var connString = connInformation.DataSource;
+
+            try
+            {
+                Connection.Connect(connString, connInformation.UserID);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+                return;
+            }
+
+            var source = connString.Split(':')[0].Substring(7);
+            var manager = new ManagerWindow(connInformation.InitialCatalog, connInformation.UserID, source);
             manager.Show();
             Close();
         }
